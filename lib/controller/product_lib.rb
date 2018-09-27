@@ -46,7 +46,7 @@ module ProductLib
 
   def sort_style category_id, type_sort
     page_row = Settings.paginate_for.sort_page
-    
+
     if category_id == "-- Categories --"
       case type_sort
       when "A-Z"

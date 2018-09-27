@@ -15,14 +15,14 @@
       <%= image_for @product %>
     </div>
     <div class="col-sm-5 pd-right">
-      <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i> 
+      <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i>
         <%= @product.name %>
       </h4>
       <div class="start" id="product_rating">
         <%= render partial: "product_rating", locals: {product_on: @product_on} %>
       </div>
-      <div class="gia"><i class="fa fa-money" aria-hidden="true"></i> 
-        <%= number_to_currency(@product.price, unit: "VND", format: "%n %u", precision: 0) %>
+      <div class="gia"><i class="fa fa-money" aria-hidden="true"></i>
+        <%= number_to_currency(@product.price) %>
       </div>
       <span class="pd_click">
         <%= render "product_row", product: @product%>

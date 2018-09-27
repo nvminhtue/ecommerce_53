@@ -11,7 +11,7 @@ module RecentViewsHelper
     end
 
     if session[:recently].index(id).nil?
-      session[:recently] << id;
+      session[:recently] << id
     end
   end
 

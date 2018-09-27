@@ -9,7 +9,6 @@ class DetailOrder < ApplicationRecord
     joins(:order).includes(:order).
     where(order_id: order_id)
   end
-
   private
 
   def product_present

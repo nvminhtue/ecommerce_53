@@ -7,14 +7,33 @@ en:
       rating_star:  You rated it {%point}.
     suggestion_controller:
       thank: Thank you :) your feedback will be reviewed.
+      success: "Product has been updated"
+      upload: "Product is uploaded"
+      info: "Product is not found"
+    detail_orders_controller:
+      info: "Could not load detail order"
+  carts:
+    success: "Successful order "
+    info: Order infomation has been sent to your email
+    show:
+      nothing: "Nothing to show"
+      back: "Back to shopping"
+    cart_row:
+      update: "Update Quantity"
+      delete: Delete
+      confirm: "Are you sure you wish to delete the product %{detail} from your cart?"
   layouts:
+    cart_text:
+      item: "%{size} Items in Cart"
+      checkout: "Checkout"
     header:
       logo: "E-Commerce"
       home: "Furniture.com"
       product: "Product"
-      user: User
+      history: "Shopping history"
+      users: Users
       login: Login
-      update: "Update"
+      update: Update your profile
       signup: Sign Up
       sell: "Sell"
       cart: Cart
@@ -30,6 +49,20 @@ en:
       mana_cate: Category Manager
       mana_suggest: Suggetion Manager
       mana_orders: Order Manager
+  orders:
+    warning: "Can not found order"
+    permit: "No permittion"
+    order_row:
+      order: "Order %{n} "
+      history: "History"
+      total: "Total Bill: "
+      date: "Shoping Date: "
+      status: "Order status: "
+    show:
+      title: "Detail history order"
+      unit: "Unit Price: "
+      quantity: "Quantity: "
+      total: "Total price"
   sessions:
     warning: "You are currently logged in"
     back: "Welcome back %{user_name}"
@@ -41,6 +74,11 @@ en:
   static_pages:
     title: "E-Commerce"
     home: "Home"
+    home:
+      trend: HOT TRENDS
+      update: PRODUCT UPDATES
+      recently: YOUR RECENTLY VIEWED ITEMS
+      success: "Successful order "
     carousel:
       slide_1_title: Living room
       slide_1_content: Living Room furniture to suit your style.
@@ -50,7 +88,7 @@ en:
       slide_3_content: Hallway furniture to suit your style.
       next: Next
       prev: Previous
-    home:  
+    home:
       trend: HOT TRENDS
       update: PRODUCT UPDATES
       recently: YOUR RECENTLY VIEWED ITEMS
@@ -94,7 +132,15 @@ en:
     edit:
       title: Update product
       save: "Save changes"
-      
+  user_mailer:
+    info_order:
+      dear: "Dear "
+      order: "Your order request has been received and transfered on "
+      total_bill: Total Bill
+      product: Product
+      price: Price
+      quantity: Quantity
+      total: Total
   users:
     welcome: "Welcome %{u} to Furniture E-Commerce"
     danger: "Invalid email/password"
@@ -102,8 +148,9 @@ en:
     info: "Please log in."
     permit: "No access permitted!"
     no_found: User's not found
+    delete: "User deleted"
     index:
-      title: "Admin Control Site"
+      title: "All users"
     edit:
       edit_user: "Edit user"
       save: "Save changes"
@@ -117,7 +164,7 @@ en:
     new:
       h2: Suggestion
 
-  admin: 
+  admin:
     users:
       destroy:
         delete: Deleted user.
@@ -157,12 +204,23 @@ en:
         destroy-success: Deleted category.
         destroy-fail: Can't delete category.
     suggestions:
-      index: 
+      index:
         title_head: SUGGETION MANAGER
         title_table: Suggestion
       update:
         updated: Updated suggestion.
         update-fail: Can't update suggestion.
-             
-
-
+  suggestions:
+    new:
+      h2: Suggestion
+      pls_login: Please login !!!
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%n %u"
+        precision: 0
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "VND"

@@ -77,6 +77,38 @@ Category.create!(name: "Ban")
 #     )
 #   end
 # end
+Product.create!(name: "A",
+  description: "A",
+  category_id: 1,
+  quantity: 1,
+  price: 100
+)
+
+12.times do
+  rand = 2+Random.rand(7)
+  Product.create!(name: Faker::Name.unique.name,
+    description: Faker::Lorem.sentence(4),
+    category_id: rand,
+    quantity: rand,
+    price: rand
+  )
+end
+
+10.times do
+  user_id = 1+Random.rand(4)
+  o = Order.create!(user_id: user_id,
+    status: 1
+  )
+
+  4.times do
+    r = 1+Random.rand(12)
+    DetailOrder.create!(order_id: o.id,
+      product_id: r,
+      quantity: r,
+      price: r+1000000
+    )
+  end
+end
 # /test hot trend
 
 # test rating
@@ -134,6 +166,10 @@ Category.create!(name: "Ban")
 # Product.create!(name: "Z",
 #   description: "none",
 #   image: "product/4.jpg",
+
+# Product.create!(name: "A",
+#   description: "none",
+#   image: "product/2.jpg",
 #   category_id: 1,
 #   quantity: 1,
 #   price: 1
@@ -187,10 +223,7 @@ Category.create!(name: "Ban")
 # Category.create!(name: "Quan ao")
 # Product.create!(name: "Quan 2018",
 #   description: "none",
-#   category_id: 1,
-#   quantity: 1,
-#   price: 1
-# )
+
 # Product.create!(name: "Ao 2010",
 #   description: "none",
 #   category_id: 1,

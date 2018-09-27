@@ -14,20 +14,19 @@
   </div>
 </td>
 <td data-th="Price">
-  <%= number_to_currency(product.price, unit: "VND", format: "%n %u", precision: 0)%>
+  <%= number_to_currency(product.price)%>
 </td>
 <td data-th="Quantity">
   <%= f.number_field :quantity, value: detail_order.quantity.to_i, class: "form-control text-center", min: 1 %>
 </td>
 <td data-th="Subtotal" class="text-center">
-  <%= number_to_currency(detail_order.product.price * detail_order.quantity, unit: "VND", format: "%n %u", precision: 0) %>
+  <%= number_to_currency(detail_order.product.price * detail_order.quantity) %>
 </td>
 <td class="actions" data-th="">
     <!-- button -->
     <%= f.button :submit, class: "btn btn-info btn-sm" do %>
       <i class="fa fa-refresh"></i>
     <% end %>
-    
     <%= link_to detail_order,
     {data: {confirm: t(".confirm",
     detail: detail_order.product.name)},
@@ -39,7 +38,7 @@
 </tr>
 <tr class="visible-xs">
 <td class="text-center"><strong>
-  <%= number_to_currency(detail_order.product.price * detail_order.quantity, unit: "VND", format: "%n %u", precision: 0) %>
+  <%= number_to_currency(detail_order.product.price * detail_order.quantity) %>
 </strong></td>
 </tr>
 <% end %>

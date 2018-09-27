@@ -9,7 +9,6 @@
   <div class="col-sm-4"></div>
   <div class="col-sm-4 login-view">
     <%= form_for @category, url: admin_category_path do |f| %>
-
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
 
@@ -27,7 +26,7 @@
        { class: "form-control sort-cate"  }
       %>
       <!-- /categories select -->
-      
+
       <br>
       <%= f.submit "SAVE", class: "btn btn-primary  btn-block bt-edit" %>
     <% end %>
@@ -37,3 +36,4 @@
 
 </div>
 </div>
+

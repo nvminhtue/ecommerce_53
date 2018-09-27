@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
   before_action :load_product, :init_resentlies, only: %i(edit show update)
   before_action :load_categories_sort, except: :show
+  before_action :category_name_to_id, only: %i(create update)
 
   def index
     @category_id = params[:category]
     @type_sort = params[:type_sort]
-
     if @category_id.blank? && @type_sort.blank?
       @products = Product.sort_product_updated.paginate(page: params[:page],
        per_page: Settings.paginate_for.sort_page)
@@ -50,10 +50,9 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
-  private
-  def product_params
-    params.require(:product)
-      .permit :name, :description, :rate, :price, :picture, :category, :id
+  def validation_login
+    flash[:warning] = t "Please login !!!"
+    redirect_to root_path
   end
 
   def validation_login

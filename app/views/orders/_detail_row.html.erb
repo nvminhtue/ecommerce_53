@@ -14,18 +14,18 @@
   </div>
 </td>
 <td data-th="Price">
-  <%= number_to_currency(product.price, unit: "VND", format: "%n %u", precision: 0)%>
+  <%= number_to_currency(product.price)%>
 </td>
 <td data-th="Quantity">
   <center><%= detail_order.quantity %></center>
 </td>
 <td data-th="Subtotal" class="text-center">
-  <%= number_to_currency(detail_order.product.price * detail_order.quantity, unit: "VND", format: "%n %u", precision: 0) %>
+  <%= number_to_currency(detail_order.product.price * detail_order.quantity) %>
 </td>
 </tr>
 <tr class="visible-xs">
 <td class="text-center"><strong>
-  <%= number_to_currency(detail_order.product.price * detail_order.quantity, unit: "VND", format: "%n %u", precision: 0) %>
+  <%= number_to_currency(detail_order.product.price * detail_order.quantity) %>
 </strong></td>
 </tr>
 <% end %>

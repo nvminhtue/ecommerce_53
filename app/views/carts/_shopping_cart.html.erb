@@ -20,5 +20,5 @@
     detail_order: detail_order, show_total: @order.total %>
   <% end %>
   <h1><%= t("orders.index.total")%>
-    <%=number_to_currency(@order.total, unit: "VND", format: "%n %u", precision: 0)%></h1>
+    <%=number_to_currency(@order.total)%></h1>
 <% end %>

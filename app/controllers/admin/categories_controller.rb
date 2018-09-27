@@ -57,15 +57,13 @@ class Admin::CategoriesController < ApplicationController
       params[:category][:parent_id] = nil
     else
       parent = Category.find_by(id: params[:category][:parent_id])
-      
+
       if parent.present?
         params[:category][:parent_id] = parent.id
       else
         params[:category][:parent_id] = nil
       end
     end
-
-
     params.require(:category)
       .permit :name, :parent_id
   end

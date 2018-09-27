@@ -20,7 +20,7 @@
             <%= image_tag(product.picture.url, class: "img") %>
             <div class="content">
               <div class="line"></div>
-              <p class="citem">$ <%= product.price %></p>
+              <p class="citem"><%= number_to_currency(product.price)%></p>
               <h4 class="citem"><%= product.name %></h4>
             </div>
             <div class="topbg">&nbsp;</div>

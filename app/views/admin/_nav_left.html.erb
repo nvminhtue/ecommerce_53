@@ -1,0 +1,50 @@
+<div class="col-sm-2 fix admin-nav-left">
+<div class="navbar-default sidebar" role="navigation">
+<div class="sidebar-nav navbar-collapse my-sidebar">
+  <ul class="nav in" id="side-menu">
+    <li class="sidebar-search">
+      <div class="input-group custom-search-form">
+        <input type="text" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+        <!-- /input-group -->
+      </li>
+      <li>
+        <%= link_to admin_home_path do %>
+          <i class="fa fa-university" aria-hidden="true"></i> Admin
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_users_path do %>
+          <i class="fa fa-users"></i> User Management
+        <% end %>
+      </li>
+      
+      <li>
+        <%= link_to admin_products_path do %>
+          <i class="fa fa-tags" aria-hidden="true"></i> Product Management
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_categories_path do %>
+          <i class="fa fa-industry" aria-hidden="true"></i> Category Management
+        <% end %>
+      </li>
+
+      <li>
+        <a href="index.html" class="active">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i> Suggetion Management
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <!-- /.sidebar-collapse -->
+</div>
+</div>

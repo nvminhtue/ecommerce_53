@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'detail_orders/show'
-  end
   root "static_pages#home"
+
+  get "/cart", to: "carts#show"
+  get "/checkout", to: "carts#destroy"
+  get "/history", to: "orders#index"
   get "sessions/new"
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"

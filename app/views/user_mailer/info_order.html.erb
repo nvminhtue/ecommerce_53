@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<% @user = User.find_by(id: @order.user_id) %>
+<h1><%= t".dear" %><%= @user.name %>, </h1>
+
+<div>
+<h4><%= t".order" %><%= @order.created_at.to_date %> </h4>
+  <table>
+  <tr>
+    <th></th>
+    <th><%= t".product" %></th>
+    <th><%= t".price" %></th>
+    <th><%= t".quantity" %></th>
+    <th><%= t".total" %></th>
+  </tr>
+  <% @order.detail_orders.each do |detail| %>
+  <tr>
+    <th><%= image_tag detail.product.picture.url, class: "img-responsive"%></th>
+    <th><%= link_to detail.product.name, detail.product %></th>
+    <th><%= number_to_currency(detail.product.price)%></th>
+    <th><%= detail.quantity %></th>
+    <th><%= number_to_currency(detail.product.price * detail.quantity) %></th>
+  </tr>
+  <% end %>
+  </table>
+  <h3><center><b><%= t".total_bill" %></b>
+  <b><%= number_to_currency(@order.total) %></center></b></h3>
+</div>
+</body>
+</html>

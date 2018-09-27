@@ -1,0 +1,11 @@
+gravatar:
+  size: 80
+user:
+  name:
+    _max: 50
+  email:
+    _max: 255
+  password:
+    _min: 6
+remember_me:
+  set: "1"

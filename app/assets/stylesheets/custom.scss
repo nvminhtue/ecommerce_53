@@ -90,6 +90,19 @@ footer {
   }
 }
 
+/* mycss */
+.hide{
+  display: none;
+}
+
+.myimg > img{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 80px;
+  z-index: 10000;
+}
+
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
 

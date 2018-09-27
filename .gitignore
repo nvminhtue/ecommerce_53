@@ -1,13 +1,10 @@
 /.bundle
 
+# Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
+# Ignore uploaded files in development
 /storage/*
 !/storage/.keep
 
@@ -18,5 +15,15 @@
 .byebug_history
 
 node_modules/
+
+# Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# My gitignore
 config/database.yml
+
+tmp/*
+test/*
+public/uploads/*
+bin/*
+config/credentials.yml.enc

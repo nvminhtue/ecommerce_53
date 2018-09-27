@@ -12,35 +12,6 @@ $min-height: 536px;
   display: none;
 }
 
-.myimg > img{
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 80px;
-  z-index: 10000;
-}
-
-.sugges{
-  min-height: $min-height;
-  background-color: white;
-}
-
-.sugges{
-  h2{
-    text-align: center;
-  }
-
-  .btsuggest{
-    width: 100%;
-  }
-}
-
-.start{
-  a:click{
-    text-decoration: none;
-  }
-}
-
 // category
 .mydrop a:after{
   border-left-color: #2d2d2d !important;

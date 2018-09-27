@@ -9,6 +9,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "/images/" + [version_name, "default.png"].compact.join('_')
-   end
+    "/images/" + [version_name, "default.png"].compact.join("_")
+  end
 end

@@ -5,10 +5,8 @@ class ProductsController < ApplicationController
   before_action :load_categories_sort, except: :show
 
   def index
-    @category_sort = params[:category]
-    @type_sort = params[:type_sort]
-    @products = sort_style @category_sort, @type_sort
-    render "products/index"
+    @products = Product.paginate(page: params[:page])
+    @detail_order = current_order.detail_orders.build
   end
 
   def create
@@ -27,12 +25,10 @@ class ProductsController < ApplicationController
   end
 
   def edit; end
-  
+
   def show
     @product_ratings = Rating.product_rating(@product.id)
     @product_on = star_on @product_ratings
-
-    # current_user.id !!!
     @user_rating = Rating.user_rating(@product.id,1)
     @user_on = user_star_on @user_rating[0]
   end
@@ -40,11 +36,9 @@ class ProductsController < ApplicationController
   def rating
     load_product
     update = @product.ratings.find_by(user_id: 1)
-
     if update.blank?
-      # current_user.id !!!
       Rating.create!(user_id: 1,
-       product_id: @product.id, rating: params[:point])
+      product_id: @product.id, rating: params[:point])
     else
       update.update_attributes(rating: params[:point])
     end
@@ -63,16 +57,16 @@ class ProductsController < ApplicationController
 
   def destroy; end
 
+  private
+  def product_params
+    params.require(:product)
+      .permit :name, :description, :rate, :price, :picture, :category, :id
+  end
+
   def load_product
     @product = Product.find(params[:id])
     return if @product.present?
     flash[:info] = t ".info"
     redirect_to root_path
-  end
-
-  private
-  def product_params
-    params.require(:product)
-      .permit :name, :description, :rate, :price, :picture, :category, :id
   end
 end

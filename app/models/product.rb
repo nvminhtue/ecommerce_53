@@ -1,10 +1,12 @@
 class Product < ApplicationRecord
   VALID_MONEY_REGEX = /d*(\.d{1,2})?/
+
   has_many :ratings
   has_many :users, through: :ratings
   has_many :order_details
   belongs_to :category
   mount_uploader :picture, PictureUploader
+
   validates :name, presence: true, uniqueness: true,
     length: {maximum: Settings.product.name._max}
   validates :description, presence: true,

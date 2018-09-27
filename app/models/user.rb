@@ -1,10 +1,16 @@
 class User < ApplicationRecord
   has_many :ratings
   has_many :products, through: :ratings
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  VALID_PHONE_REGEX = /(09|03|05|07|08)+([0-9]{8})\b/
+  has_many :orders
+
   attr_accessor :remember_token
   before_save ->{email.downcase!}
+
+  scope :name_asc, -> {order(name: :asc)}
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_PHONE_REGEX = /(09|03|05|07|08)+([0-9]{8})\b/
+
   validates :name, presence: true, length: {maximum: Settings.user.name._max}
   validates :email, presence: true, length: {maximum: Settings.user.email._max},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}

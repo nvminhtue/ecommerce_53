@@ -50,7 +50,7 @@ module ProductLib
   end
 
   def sort_style category_sort, type_sort
-    page_row = 6*1
+    page_row = Settings.paginate_for.sort_page
     
     if category_sort == "-- Categories --"
       case type_sort

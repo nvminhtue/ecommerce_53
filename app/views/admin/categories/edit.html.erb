@@ -1,0 +1,47 @@
+<%= render partial: "admin/block_top" %>
+<%= render partial: "admin/nav_left" %>
+<div class="col-sm-10 admin-right">
+  
+<!-- title -->
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">MANAGER CATEGORY</h1>
+  </div>
+</div>
+<!-- /title -->
+<!-------------- Table ----------------->
+<div class="row">
+<div class="col-sm-12">
+<div class="row fix height-default-js">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4 login-view">
+    <%= form_for(@category, url: admin_category_url) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :parent_id %>
+      <!-- categories select -->
+      <% products_option = "-- categories --" %>
+      <% @categories_for_sort.each do |cate| %>
+        <% if @category.present? && @category.name != cate %>
+          <% products_option += "<option>"+cate+"</option>" %>
+        <% end %>
+      <% end %>
+      <%= f.select "parent_id", products_option.html_safe, {},
+       { class: "form-control sort-cate"  }
+      %>
+      <!-- /categories select -->
+      
+      <br>
+      <%= f.submit "Update", class: "btn btn-primary  btn-block bt-edit" %>
+    <% end %>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+</div>
+</div>
+<!-------------- /Table ----------------->
+</div>
+<%= render partial: "admin/block_bot" %>

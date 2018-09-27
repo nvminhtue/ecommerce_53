@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   before_action :load_user, except: %i(index create user_params logged_in new)
   before_action :correct_user, only: %i(edit update show)
-  before_action :logged_in_user, only: %i(edit update)
+  before_action :logged_in_user, only: %i(edit update index destroy)
+  before_action :admin_user, only: :destroy
 
-  def index; end
+  def index
+    @users = User.paginate(page: params[:page])
+  end
 
   def show; end
 
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
       log_in @user
       remember @user
       flash[:success] = t ".welcome", u: @user.name
-      redirect_to @user
+      redirect_to root_path
     else
       flash[:danger] = t ".danger"
       render :new
@@ -29,10 +32,24 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       flash[:success] = t ".updated"
-      redirect_to @user
+      if current_user.customer?
+        redirect_to @user
+      else
+        redirect_to admin_users_path
+      end
     else
-      render :edit
+      if current_user.customer?
+        render :edit
+      else
+        render "admin/users/edit"
+      end
     end
+  end
+
+  def destroy
+    @user.destroy
+    flash[:success] = t".delete"
+    redirect_to admin_users_path
   end
 
   private
@@ -43,9 +60,10 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    return if current_user? @user
-    redirect_to root_path
-    flash[:danger] = t ".permit"
+    if !(current_user? @user) && current_user.customer?
+      redirect_to root_path
+      flash[:danger] = t ".permit"
+    end
   end
 
   def logged_in_user
@@ -60,5 +78,9 @@ class UsersController < ApplicationController
     return if @user.present?
     flash[:info] = t ".no_found"
     redirect_to root_path
+  end
+
+  def admin_user
+    redirect_to root_path unless current_user.admin?
   end
 end

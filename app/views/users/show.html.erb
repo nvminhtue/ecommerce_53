@@ -10,7 +10,11 @@
         <% else %>
         <b>Customer</b>
         <% end %>
+        <% @history_orders = Order._order(@user.id).includes(:detail_orders) %>
+        <%= render partial: "orders/order_row" %>
       </h1>
     </section>
   </aside>
 </div>
+<!-- style lai -->
+<!-- profile and after update -->

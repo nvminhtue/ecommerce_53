@@ -8,14 +8,28 @@
   <%= f.text_field :description, class: "form-control" %>
 
   <%= f.label :category %>
-  <%= f.text_field :category, class: "form-control" %>
+  <!-- categories select -->
+  <% products_option = "<option>-- Categories --</option>" %>
+  <% @categories_for_sort.each do |cate| %>
+    <% if @category_sort.present? && @category_sort == cate %>
+      <% products_option += "<option selected>"+cate+"</option>" %>
+    <% else %>
+      <% products_option += "<option>"+cate+"</option>" %>
+    <% end %>
+  <% end %>
+  <%= f.select "category", products_option.html_safe, {},
+       { class: "form-control sort-cate" }
+  %>
+  <!-- /categories select -->
 
   <%= f.label :price %>
   <%= f.text_field :price, class: "form-control" %>
-
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-
-  <span class="picture">
+  
+  <div class="form-group">
+    <%= f.label :picture %>
     <%= f.file_field :picture %>
-  </span>
+  </div>
+
+  <br>
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block bt-edit" %>
 <% end %>

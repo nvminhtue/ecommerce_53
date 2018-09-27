@@ -1,0 +1,12 @@
+<% @user = User.find_by(id: @order.user_id) %>
+<%= t".dear" %><%= @user.name %>,
+<%= t".order" %><%= @order.created_at.to_date %>
+  <% @order.detail_orders.each do |detail| %>
+    <%= image_tag detail.product.picture.url, class: "img-responsive"%>
+    <%= link_to detail.product.name, detail.product %>
+    <%= number_to_currency(detail.product.price)%>
+    <%= detail.quantity %></th>
+    <%= number_to_currency(detail.product.price * detail.quantity) %>
+  <% end %>
+  <%= t".total_bill" %>
+  <%= number_to_currency(@order.total) %>

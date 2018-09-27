@@ -5,8 +5,9 @@ class CreateSuggestions < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :description
       t.integer :cartegory_id
-      t.string :image
+      t.string :picture
       t.string :status
+      t.integer :price
 
       t.timestamps
     end

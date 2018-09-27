@@ -14,5 +14,8 @@
  *= require_self
  *= require bootstrap.min
  *= require font-awesome.min
+ *= require metisMenu.min
+ *= require sb-admin-2
+ *= require morris
  *= require style
  */

@@ -1,8 +1,45 @@
 <% provide :title, t(".title") %>
 <% provide :button_text, t(".save") %>
-<h1><%= t(".title") %></h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= render "form" %>
+<div class="row fix height-default-js">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4 login-view">
+    <h1>
+      <%= t(".title") %>
+    </h1>
+    <%= form_for(@product) do |f| %>
+      <%= render "shared/product_error_messages" %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+
+      <%= f.label :category %>
+      <!-- categories select -->
+      <% products_option = "" %>
+      <% @categories_for_sort.each do |cate| %>
+        <% if @category.present? && @category.name == cate %>
+          <% products_option += "<option selected>"+cate+"</option>" %>
+        <% else %>
+          <% products_option += "<option>"+cate+"</option>" %>
+        <% end %>
+      <% end %>
+      <%= f.select "category", products_option.html_safe, {},
+       { class: "form-control sort-cate" }
+      %>
+      <!-- /categories select -->
+
+      <%= f.label :price %>
+      <%= f.text_field :price, class: "form-control" %>
+        
+      <div class="form-group">
+        <%= f.label :picture %>
+        <%= f.file_field :picture %>
+      </div>
+        
+      <%= f.submit yield(:button_text), class: "btn btn-primary  btn-block bt-edit" %>
+    <% end %>
   </div>
+  <div class="col-sm-4"></div>
 </div>

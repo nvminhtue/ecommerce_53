@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_060958) do
+ActiveRecord::Schema.define(version: 2018_10_12_070426) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "detail_orders", force: :cascade do |t|
@@ -45,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_060958) do
     t.integer "total", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "activated", default: false
     t.index ["detail_order_id"], name: "index_orders_on_detail_order_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -54,8 +70,8 @@ ActiveRecord::Schema.define(version: 2018_10_05_060958) do
     t.text "description"
     t.string "image"
     t.integer "quantity"
-    t.string "category"
-    t.integer "price"
+    t.integer "category_id"
+    t.decimal "price"
     t.float "rate", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,8 +91,9 @@ ActiveRecord::Schema.define(version: 2018_10_05_060958) do
     t.string "name"
     t.string "description"
     t.integer "cartegory_id"
-    t.string "image"
+    t.string "picture"
     t.string "status"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,8 +1,9 @@
-<div class="row fix sugges">
-<div class="col-sm-2"></div>
-<div class="col-sm-8 fix">
+<div class="row fix suggest height-default-js">
+<div class="col-sm-4"></div>
+<div class="col-sm-4 fix">
   <h2><%= t ".h2" %></h2>
   <%= form_for @suggest do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
@@ -10,15 +11,32 @@
   <%= f.label :description %>
   <%= f.text_field :description, class: "form-control" %>
 
-  <%= f.label :cartegory %>
-  <%= f.text_field :cartegory_id, class: "form-control" %>
-
-  <%= f.label :image %>
-  <%= f.text_field :image, class: "form-control" %>
-  
-  <br>
-  <%= f.submit "Send suggestion", class: "btn btn-primary btsuggest" %>
+  <%= f.label :category %>
+  <!-- categories select -->
+  <% products_option = "<option>-- Categories --</option>" %>
+  <% @categories_for_sort.each do |cate| %>
+    <% if @category_sort.present? && @category_sort == cate %>
+      <% products_option += "<option selected>"+cate+"</option>" %>
+    <% else %>
+      <% products_option += "<option>"+cate+"</option>" %>
+    <% end %>
   <% end %>
-<div class="col-sm-2"></div>
+  <%= f.select "cartegory_id", products_option.html_safe, {},
+       { class: "form-control sort-cate" }
+  %>
+  <!-- /categories select -->
+
+  <%= f.label :price %>
+  <%= f.text_field :price, class: "form-control" %>
+  
+  <div class="form-group">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
+
+  <br>
+  <%= f.submit "Send suggestion", class: "btn btn-primary btn-block bt-edit" %>
+  <% end %>
+<div class="col-sm-4"></div>
 </div>
 </div>

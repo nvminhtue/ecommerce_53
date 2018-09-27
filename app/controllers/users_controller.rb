@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :load_user, except: %i(index create user_params logged_in)
+  before_action :load_user, except: %i(index create user_params logged_in new)
   before_action :correct_user, only: %i(edit update show)
   before_action :logged_in_user, only: %i(edit update)
 

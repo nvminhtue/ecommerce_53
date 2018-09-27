@@ -6,10 +6,16 @@ $min-height: 536px;
 .sslogin{
   min-height: $min-height;
   background-color: white;
+}
 
-  h1{
-    padding:20px 0;
-    margin: 0;
-    text-align:center;
-  }
+.hide{
+  display: none;
+}
+
+.myimg > img{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 80px;
+  z-index: 10000;
 }

@@ -7,6 +7,13 @@ user:
     _max: 255
   password:
     _min: 6
+product:
+  name:
+    _max: 50
+  description:
+    _max: 500
+  image:
+    size: 100
 remember_me:
   set: "1"
 static_pages:

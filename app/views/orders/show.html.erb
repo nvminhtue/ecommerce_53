@@ -1,0 +1,14 @@
+<% provide :title, t(".title") %>
+<h1><%= t".title"%></h1>
+<% @history.detail_orders.each do |detail|%>
+  <h4><%= link_to detail.product.name, detail.product %></h4>
+  <h5 class="text-right"><%= t".unit" %><span style="color: green">
+    <%= number_to_currency(detail.price) %></span></h4>
+  <h5 class="text-right"><%= t".quantity" %><span style="color: green">
+    <%= detail.quantity.to_i %></span></h4>
+  <h5 class="text-right"><%= t".total" %> <span style="color: green">
+    <%= number_to_currency(detail.price * detail.quantity)%></span></h4>
+  <%= link_to (image_tag detail.product.picture.url), detail.product %>
+<% end %>
+
+

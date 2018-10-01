@@ -1,0 +1,13 @@
+en:
+  layouts:
+    header:
+      logo: "E-Commerce"
+      home: "Home"
+      product: "Product"
+    footer:
+      authors: "Authors: "
+      dong: "Ha Van Dong"
+      tue: "Nguyen Viet Minh Tue"
+  static_pages:
+    title: "E-Commerce"
+    home: "Home asds"

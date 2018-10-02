@@ -1,0 +1,16 @@
+
+<% for i in 1..5 %>
+  <% if i<=user_on %>
+    <!-- star on -->
+    <%= link_to rating_path(point: i, old: request.original_url), remote: true, method: :post do %>
+          <%= image_tag("rating/star-on.png",title: "#{i}", class: "user_rating") %>
+    <% end %>
+    <!-- /star on -->
+  <% else %>
+    <!-- star off -->
+    <%= link_to rating_path(point: i, old: request.original_url), remote: true, method: :post do %>
+          <%= image_tag("rating/star-off.png",title: "#{i}", class: "user_rating") %>
+    <% end %>
+    <!-- /star off -->
+  <% end %>
+<% end %>

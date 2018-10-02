@@ -9,5 +9,6 @@ module Project
       require "pry"
       config.console = Pry
     end
+    config.autoload_paths << "#{Rails.root}/lib/controller"
   end
 end

@@ -25,22 +25,8 @@
     </div>
     <div class="col-sm-5 pd-right">
       <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i> <%= @product.name %></h4>
-      <div class="start">
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-off.png") %>
-        <% end %>
+      <div class="start" id="product_rating">
+        <%= render partial: "product_rating", locals: {product_on: @product_on} %>
       </div>
       <div class="gia"><i class="fa fa-money" aria-hidden="true"></i> <%= @product.price %></div>
       <span class="pd_click">
@@ -66,23 +52,16 @@
       <p>aaa</p>
     </div>
     <div id="menu1" class="tab-pane fade">
-      <h3>Đánh giá sản phẩm đi nào </h3>
-      <div class="start">
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
+      <br>
+        <p><i id="thank_rating">
+        <% if @user_on.zero? %>
+          <%= t ".not_rated" %>
+        <% else %>
+          <%= t ".ever_rated" %>
         <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-on.png") %>
-        <% end %>
-        <%= link_to "#" do %>
-          <%= image_tag("rating/star-off.png") %>
-        <% end %>
+        </i></p>
+      <div class="start" id="user_rating">
+      <%= render partial: "user_rating", locals: {user_on: @user_on} %>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @hot = Product.all.take(Settings.static_pages.product_quantity)
+    @hot = Product.hot_trend
+    @product_home = Product.take(12)
   end
 end

@@ -1,0 +1,92 @@
+<!-- 
+
+
+
+  Gửi anh chị file này em chưa dùng i18n vì đây chỉ là bản demo
+
+
+
+
+-->
+<div class="row fix">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 fix">
+  <!-- Product detail -->
+  <div class="page_header">
+      PRODUCT DETAIL
+  </div>
+  <div class="page_down">
+    <i class="fa fa-caret-down" aria-hidden="true" style="font-size: 24px;"></i>
+  </div>
+
+  <div class="row product-detail fix">
+    <div class="col-sm-7 pd-left fix">
+      <img src="<%= @product.image %>" alt="">
+    </div>
+    <div class="col-sm-5 pd-right">
+      <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i> <%= @product.name %></h4>
+      <div class="start">
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-off.png") %>
+        <% end %>
+      </div>
+      <div class="gia"><i class="fa fa-money" aria-hidden="true"></i> <%= @product.price %></div>
+      <span class="pd_click">
+        <a href="#" class="buy-now">MUA NGAY</a>
+        <a href="#" class="your-cart" >Xem giỏ hàng của bạn</a>
+      </span>
+    </div>
+  </div>
+  <!-- /Product detail -->
+</div>
+
+
+<!-- Mô tả SP -->
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Mô tả SP</a></li>
+    <li><a data-toggle="tab" href="#menu1">Đánh giá</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>Mô tả SP</h3>
+      <p>aaa</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Đánh giá sản phẩm đi nào </h3>
+      <div class="start">
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-on.png") %>
+        <% end %>
+        <%= link_to "#" do %>
+          <%= image_tag("rating/star-off.png") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Mô tả SP -->
+<div class="col-sm-1"></div>
+</div>

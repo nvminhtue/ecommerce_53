@@ -9,18 +9,21 @@ en:
       no_found: User's not found
     sessions_controller:
       warning: "You are currently logged in"
-      back: "Welcome back %{u}"
+      back: "Welcome back %{user_name}"
+    products_controller:
+      warning: Product not found
   layouts:
     header:
       logo: "E-Commerce"
-      home: "Home"
+      home: "Furniture.com"
       product: "Product"
       user: User
       login: Login
       update: "Update"
+      signup: Sign Up
     footer:
       authors: "Authors: "
-      name: "Ha Van Dong | Nguyen Viet Minh Tue"
+      name: "Hà Văn Đồng | Nguyễn Viết Minh Tuệ"
   sessions:
     new:
       signup: "Sign up now"

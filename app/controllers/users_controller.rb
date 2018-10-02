@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       remember @user
-      flash[:success] = t "controllers.users_controller.welcome",u: @user.name
+      flash[:success] = t "controllers.users_controller.welcome", u: @user.name
       redirect_to @user
     else
       flash[:danger] = t "controllers.users_controller.danger"
@@ -39,27 +39,26 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user)
-      .permit :name, :email, :phone, :address, :password, :password_confirmation
+      .permit(:name, :email, :phone, :address,:password, :password_confirmation)
   end
 
   def correct_user
     return if current_user? @user
     redirect_to root_path
-    flash[:danger] = t"controllers.users_controller.permit"
+    flash[:danger] = t "controllers.users_controller.permit"
   end
 
   def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:info] = t "controllers.users_controller.info"
-      redirect_to login_path
-    end
+    return if logged_in?
+    store_location
+    flash[:info] = t "controllers.users_controller.info"
+    redirect_to login_path
   end
 
   def load_user
     @user = User.find_by id: params[:id]
     return if @user.present?
-    flash[:info]= t "controllers.users_controller.no_found"
+    flash[:info] = t "controllers.users_controller.no_found"
     redirect_to root_path
   end
 end

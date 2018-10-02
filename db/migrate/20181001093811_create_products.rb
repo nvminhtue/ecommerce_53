@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :image, :default => "product/default-product.jpg"
       t.integer :quantity
-      t.integer :cartegory_id
+      t.integer :category_id
       t.decimal :price
 
       t.timestamps

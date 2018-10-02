@@ -1,0 +1,55 @@
+<!-- title -->
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header"><%= t ".title_head" %></h1>
+  </div>
+</div>
+<!-- /title -->
+<!-------------- Table ----------------->
+<div class="row">
+<div class="col-sm-12">
+<div class="panel panel-default mytable">
+  <div class="panel-heading">
+    <%= t ".title_table" %>
+  </div>
+<!-- /.panel-heading -->
+<div class="panel-body">
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <tr>
+      <% columns = load_category_columns %>
+      <% columns.each do |col| %>
+        <th><%= col.capitalize %></th>
+      <% end %>
+      <th width="80px">EDIT</th>
+      <th width="100px">DELETE</th>
+    </tr>
+    <tr>
+    <!-- table user -->
+    <% @categories.each do |c| %>
+    <tr>
+      <% for i in 0...columns.count do %>
+      <td><%= c[columns[i]] %></td>
+      <% end %>
+      <td class="table-update">
+        <%= link_to edit_admin_category_path(c) do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT
+        <% end %>
+      </td>
+      <td class="table-delete">
+        <%= link_to admin_category_path(c), method: :delete, data: {confirm: "You sure?"} do %>
+           <i class="fa fa-trash-o" aria-hidden="true"></i> DELETE
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<div>
+  <%= link_to t(".add_new"), new_admin_category_path %>
+</div>
+</div>
+  <%= will_paginate @categories %>
+</div>
+</div>
+</div>
+</div>

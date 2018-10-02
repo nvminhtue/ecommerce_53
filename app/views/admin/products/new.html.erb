@@ -1,0 +1,39 @@
+<div class="row fix height-default-js">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8 login-view">
+    <h1>
+      <%= t(".new") %>
+    </h1>
+    <%= form_for [:admin, @product] do |f| %>
+      <%= render "shared/product_error_messages" %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+
+      <%= f.label :category %>
+      <!-- categories select -->
+      <% products_option = "" %>
+      <% @categories.each do |cate| %>
+        <% products_option += "<option>"+cate+"</option>" %>
+      <% end %>
+      <%= f.select "category", products_option.html_safe, {},
+       { class: "form-control sort-cate"  }
+      %>
+      <!-- /categories select -->
+
+      <%= f.label :price %>
+      <%= f.text_field :price, class: "form-control" %>
+      
+      <div class="form-group picture">
+        <label>File input</label>
+        <%= f.file_field :picture %>
+      </div>
+
+      <%= f.submit "CREATE", class: "btn btn-primary btn-block bt-edit" %>
+    <% end %>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

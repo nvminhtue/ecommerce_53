@@ -1,20 +1,10 @@
-<!--
-
-
-
-
-  Gửi anh chị file này em chưa dùng i18n vì đây chỉ là bản demo
-
-
-
-
--->
+<% provide :title, @product.name %>
 <div class="row fix">
 <div class="col-sm-1"></div>
 <div class="col-sm-10 fix">
   <!-- Product detail -->
   <div class="page_header">
-      PRODUCT DETAIL
+    <%= t ".title" %>
   </div>
   <div class="page_down">
     <i class="fa fa-caret-down" aria-hidden="true" style="font-size: 24px;"></i>
@@ -22,69 +12,55 @@
 
   <div class="row product-detail fix">
     <div class="col-sm-7 pd-left fix">
-      <img src="<%= @product.image %>" alt="">
+      <!-- <img src="<%= @product.image %>" alt=""> -->
+      <%= image_for @product %>
     </div>
     <div class="col-sm-5 pd-right">
       <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i> <%= @product.name %></h4>
       <div class="start" id="product_rating">
         <%= render partial: "product_rating", locals: {product_on: @product_on} %>
       </div>
-      <div class="gia"><i class="fa fa-money" aria-hidden="true"></i> <%= @product.price %></div>
+      <div class="gia"><i class="fa fa-money" aria-hidden="true"></i> 
+        <%= number_to_currency(@product.price, unit: "VND", format: "%n %u") %>
+      </div>
       <span class="pd_click">
-        <a href="#" class="buy-now">MUA NGAY</a>
-        <a href="#" class="your-cart" >Xem giỏ hàng của bạn</a>
+        <a href="#" class="buy-now"><%= t ".addcart" %></a>
+        <a href="#" class="your-cart"><%= t ".seecart" %></a>
       </span>
     </div>
   </div>
   <!-- /Product detail -->
 </div>
 
-
 <!-- Mô tả SP -->
 <div class="container">
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Mô tả SP</a></li>
-    <li><a data-toggle="tab" href="#menu1">Đánh giá</a></li>
+    <li class="active"><a data-toggle="tab" href="#home"><%= t ".decrip" %></a></li>
+    <% if logged_in? %>
+      <li><a data-toggle="tab" href="#menu1"><%= t ".rating" %></a></li>
+    <% end %>
   </ul>
 
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h3>Mô tả SP</h3>
-      <p>aaa</p>
+      <h3><%= t ".decrip" %></h3>
+      <p><%= @product.description %></p>
     </div>
-    <div id="menu1" class="tab-pane fade">
-      <br>
-        <p><i id="thank_rating">
-        <% if @user_on.zero? %>
-          <%= t ".not_rated" %>
-        <% else %>
-          <%= t ".ever_rated" %>
-        <% end %>
-        </i></p>
-      <div class="start" id="user_rating">
-      <%= render partial: "user_rating", locals: {user_on: @user_on} %>
+    <% if logged_in? %>
+      <div id="menu1" class="tab-pane fade">
+        <br>
+          <p><i id="thank_rating">
+          <% if @user_on.zero? %>
+            <%= t ".not_rated" %>
+          <% else %>
+            <%= t ".ever_rated" %>
+          <% end %>
+          </i></p>
+        <div class="start" id="user_rating">
+        <%= render partial: "user_rating", locals: {user_on: @user_on} %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 <!-- /Mô tả SP -->
-<div class="col-sm-1"></div>
-<% provide :title, @product.name %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <small><%= @product.category %></small>
-      <hr>
-      <h1>
-        <%= image_for @product %>
-        <%= @product.name %>
-      </h1>
-      <p><%= @product.description %></p>
-      <hr>
-      <b><%= t(".rate", u: @product.rate.to_s) %></b>
-      <h3><%= number_to_currency(@product.price,
-        unit: "VND", format: "%n %u") %></h3>
-      <%= link_to t(".update"), edit_product_path(@product) %>
-    </section>
-  </aside>
-</div>

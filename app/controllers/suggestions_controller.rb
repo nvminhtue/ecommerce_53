@@ -1,4 +1,6 @@
 class SuggestionsController < ApplicationController
+  before_action :load_categories_select, only: %i(new)
+
   def new
     @suggest = Suggestion.new
   end
@@ -13,6 +15,10 @@ class SuggestionsController < ApplicationController
   private
   def suggest_param
     params.require(:suggestion)
-      .permit :name, :description, :cartegory_id, :image
+      .permit :name, :user_id, :description, :category_id, :picture, :status
+  end
+
+  def load_categories_select
+    @categories = Category.all
   end
 end

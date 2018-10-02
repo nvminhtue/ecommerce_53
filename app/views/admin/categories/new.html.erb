@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">NEW CATEGORY</h1>
+  </div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div class="row fix height-default-js">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4 login-view">
+    <%= form_for [:admin, @category] do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :parent_category %>
+      <!-- categories select -->
+      <% products_option = "<option>nil</option>" %>
+      <% @categories.each do |cate| %>
+        <% if @parent.present? && @parent.name == cate %>
+          <% products_option += "<option selected>"+cate+"</option>" %>
+        <% else %>
+          <% products_option += "<option>"+cate+"</option>" %>
+        <% end %>
+      <% end %>
+      <%= f.select :parent_id, products_option.html_safe, {},
+       { class: "form-control sort-cate"  }
+      %>
+      <!-- /categories select -->
+      
+      <br>
+      <%= f.submit "CREATE", class: "btn btn-primary  btn-block bt-edit" %>
+    <% end %>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+</div>
+</div>

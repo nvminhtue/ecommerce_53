@@ -1,0 +1,70 @@
+<% if !@detail_order.nil? && @detail_order.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @detail_order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @detail_orders.size == 0 %>
+<p class="text-center height-default-js cart-nothing">
+  <%= t ".nothing" %>
+  <%= link_to t(".back"), root_path %>
+</p>
+<% else %>
+<div class="row fix height-default-js">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 cart-checkout fix">
+<!-- main -->
+<!-- Page title -->
+<div class="page_header">
+    YOUR CART
+</div>
+<div class="page_down">
+  <i class="fa fa-caret-down" aria-hidden="true" style="font-size: 24px;"></i>
+</div>
+<!-- /Page title -->
+<div class="container-fuild">
+  <table id="cart" class="table table-hover table-condensed">
+    <tr>
+      <th style="width:50%">Product</th>
+      <th style="width:10%">Price</th>
+      <th style="width:8%">Quantity</th>
+      <th style="width:22%" class="text-center">Subtotal</th>
+      <th style="width:10%"></th>
+    </tr>
+    <tr>
+    <!-- product demo -->
+    <% @detail_orders.each do |detail_order| %>
+      <%= render "carts/cart_row", product: detail_order.product,
+      detail_order: detail_order, show_total: @order.total %>
+    <% end %>
+    <!-- /product demo -->
+
+    <!-- Checkout -->
+    <tr>
+      <td>
+        <%= link_to root_path, class: "btn btn-warning" do %>
+          <i class="fa fa-angle-left"></i> Continue Shopping
+        <% end %>
+      </td>
+      <td colspan="2" class="hidden-xs"></td>
+      <td class="hidden-xs text-center"><strong>
+        <%= t("orders.index.total")%>
+        <%=number_to_currency(@order.total, unit: "VND", format: "%n %u", precision: 0)%>
+      </strong></td>
+      <td>
+        <%= link_to checkout_path, class: "btn btn-success btn-block" do %>
+          <%= t(".checkout") %> <i class="fa fa-angle-right"></i>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+<!-- /main -->
+</div>
+<div class="col-sm-1"></div>
+</div>
+
+<% end %>

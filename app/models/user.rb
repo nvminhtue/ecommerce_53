@@ -1,17 +1,21 @@
 class User < ApplicationRecord
   has_many :ratings
   has_many :products, through: :ratings
+  has_many :suggestion
+  has_many :orders
+  attr_accessor :remember_token
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   VALID_PHONE_REGEX = /(09|03|05|07|08)+([0-9]{8})\b/
-  attr_accessor :remember_token
   before_save ->{email.downcase!}
   validates :name, presence: true, length: {maximum: Settings.user.name._max}
   validates :email, presence: true, length: {maximum: Settings.user.email._max},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :address, presence: true
   validates :phone, presence: true, format: {with: VALID_PHONE_REGEX}
-  validates :password, length: {minimum: Settings.user.password._min}
+  validates :password, length: {minimum: Settings.user.password._min},
+   allow_nil: true
   enum role: {customer: 0, admin: 1}
+  scope :select_col, ->{attribute_names}
   has_secure_password
 
   class <<self

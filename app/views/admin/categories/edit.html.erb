@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">UPDATE CATEGORY</h1>
+  </div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div class="row fix height-default-js">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4 login-view">
+    <%= form_for @category, url: admin_category_path do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :parent_category %>
+      <!-- categories select -->
+      <% products_option = "<option value='nil'>nil</option>" %>
+      <% @categories.each do |cate| %>
+        <% if @category.present? && @category.name == cate %>
+          <% products_option += "<option value='"+cate.id.to_s+"' selected>"+cate.name+"</option>" %>
+        <% else %>
+          <% products_option += "<option value='"+cate.id.to_s+"'>"+cate.name+"</option>" %>
+        <% end %>
+      <% end %>
+      <%= f.select :parent_id, products_option.html_safe, {},
+       { class: "form-control sort-cate"  }
+      %>
+      <!-- /categories select -->
+      
+      <br>
+      <%= f.submit "SAVE", class: "btn btn-primary  btn-block bt-edit" %>
+    <% end %>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+</div>
+</div>

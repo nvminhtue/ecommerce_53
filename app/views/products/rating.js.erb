@@ -1,6 +1,6 @@
 $("#product_rating").html("<%= j render partial: 'product_rating', locals: {product_on: @product_on} %> ")
 $("#user_rating").html("<%= j render partial: 'user_rating', locals: {user_on: @user_on} %> ")
-$("#thank_rating").html("<span style='color:green'>Cảm ơn bạn đã đánh giá sản phẩm :D</span>")
+$("#thank_rating").html("<span style='color:green'>Thank you for your review :D</span>")
 $(document).ready(function(){
   rating_run();
 });

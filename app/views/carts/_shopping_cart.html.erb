@@ -1,0 +1,24 @@
+<% if !@detail_order.nil? && @detail_order.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @detail_order.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @detail_orders.size == 0 %>
+  <p class="text-center">
+    <%= t".nothing" %>
+    <%= link_to t(".back"), products_path %>
+  </p>
+
+<% else %>
+<%= link_to t(".checkout"), checkout_path %>
+  <% @detail_orders.each do |detail_order| %>
+    <%= render "carts/cart_row", product: detail_order.product,
+    detail_order: detail_order, show_total: @order.total %>
+  <% end %>
+  <h1><%= t("orders.index.total")%>
+    <%=number_to_currency(@order.total, unit: "VND", format: "%n %u", precision: 0)%></h1>
+<% end %>

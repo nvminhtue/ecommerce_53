@@ -1,0 +1,56 @@
+<!-- slide -->
+<div class="row fix">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 fix">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("slide/slide-demo6.jpg") %>
+      <div class="carousel-caption">
+        <a href="#" class="slide-click">
+          <h3><%= t ".slide_1_title" %></h3>
+          <p><%= t ".slide_1_content" %></p>
+        </a>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag("slide/slide-demo4.jpg") %>
+      <div class="carousel-caption">
+        <a href="#" class="slide-click">
+          <h3><%= t ".slide_2_title" %></h3>
+          <p><%= t ".slide_2_content" %></p>
+        </a>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag("slide/slide-demo5.jpg") %>
+      <div class="carousel-caption">
+        <a href="#" class="slide-click">
+          <h3><%= t ".slide_3_title" %></h3>
+          <p><%= t ".slide_3_content" %></p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only"><%= t ".prev" %></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only"><%= t ".next" %></span>
+  </a>
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
+<!-- /slide -->

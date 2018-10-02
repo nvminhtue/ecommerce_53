@@ -141,7 +141,13 @@ a:hover{
   position: relative;
   display: inline-block;
   width: 100%;
-  min-height: 270px
+  min-height: 270px;
+}
+
+@media (min-width: 700px){
+  .product .img{
+    height: 270px;
+  }
 }
 
 .product .content{
@@ -226,7 +232,7 @@ a:hover{
   object-position: 50% 50%;
 }
 
-.carousel-caption .khung{
+.carousel-caption .slide-click{
   display: inline-block;
   padding: 0 15px;
   text-decoration: none;
@@ -238,7 +244,7 @@ a:hover{
   box-shadow: 0px 10px 20px #2b2b2b;
 }
 
-.carousel-caption .khung h3{
+.carousel-caption .slide-click h3{
   margin-top: 10px;
 }
 
@@ -249,7 +255,6 @@ a:hover{
   color: white;
   text-align: center;
   padding: 10px 5px;
-  margin-top: 1px;
   font-family: "Helvetica Neue";
   font-size: 17px;
 }
@@ -288,6 +293,7 @@ a:hover{
   padding: 20px;
   margin: auto;
   display: block;
+  height: 350px;
 }
 
 .pd-right{
@@ -382,4 +388,80 @@ a:hover{
 
 .sort-cate{
   margin-right: 4px;
+}
+
+/* ---------------- Admin ---------------- */
+.admin-row{
+  min-height: 88vh;
+  background-color: white;
+}
+
+/* admin left */
+.admin-nav-left{
+  background-color: #3299cc;
+  min-height: 88vh;
+}
+
+@media (min-width: 768px){
+  .admin-nav-left .sidebar {
+      z-index: 1;
+      position: relative;
+      width: 100%;
+      margin-top: 0;
+  }
+
+  
+}
+
+.admin-nav-left #side-menu li a,
+.admin-nav-left .sidebar-search{
+  background-color: #3299cc;
+  color: white;
+}
+
+.admin-nav-left #side-menu li a:hover{
+  background-color: #2979a0;
+}
+
+.my-sidebar{
+  visibility: visible;
+  display: block;
+}
+
+
+/* admin right */
+.admin-right .page-header{
+  text-align: center;
+}
+
+
+/* table */
+.mytable{
+  background-color: white;
+}
+
+.table-update a{
+  color: blue;
+}
+
+.table-delete a{
+  color: red;
+}
+
+.order-confirm .form-control,
+.order-confirm .btn
+{
+  float: left;
+}
+
+.order-confirm .form-control{
+  width: 110px;
+}
+
+.order-confirm .btn{
+  margin-left: 10px;
+}
+
+.center-vetical tbody tr td{
+  vertical-align: middle;
 }

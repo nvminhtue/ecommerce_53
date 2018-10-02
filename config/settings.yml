@@ -18,3 +18,10 @@ remember_me:
   set: "1"
 static_pages:
   product_quantity: 12
+recently_products:
+  _max: 12
+paginate_for:
+  home_page: 12
+  sort_page: 24
+  admin_page: 10
+

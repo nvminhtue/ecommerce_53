@@ -1,12 +1,12 @@
 <% provide :title, t(".title") %>
 <!-- SORT -->
-<div class="row pd-sort fix">
+<div class="row pd-sort fix height-default-js">
 <div class="col-sm-1"></div>
 <div class="col-sm-10 fix">
-  <div class="prod-title">
-    <a href="#">
-      Product sort demo
-    </a>
+  <div class="prod-title none-border">
+    <%= link_to "javascript:void(0)" do %>
+      <i class="fa fa-sort-amount-asc" aria-hidden="true"></i> <%= t ".title_sort" %>
+    <% end %>
     <%= render "select_sort" %>
   </div>
   <div class="row product">
@@ -17,7 +17,7 @@
         <% @products.each do |product| %>
         <div class="col-sm-2 pi fix">
           <%= link_to product do %>
-            <%= image_tag(product.image, class: "img") %>
+            <%= image_tag(product.picture.url, class: "img") %>
             <div class="content">
               <div class="line"></div>
               <p class="citem">$ <%= product.price %></p>

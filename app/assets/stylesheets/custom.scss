@@ -1,31 +1,38 @@
 @import "bootstrap-sprockets";
 
 // login
-$min-height: 536px;
-
-.sslogin{
-  min-height: $min-height;
+.login-view{
   background-color: white;
+
+  h1{
+    padding:20px 0;
+    margin: 0;
+    text-align:center;
+  }
+
+  label, p,{
+    margin: 5px 0;
+  }
+
+  .submit{
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .checkbox{
+    .cblogin{
+      margin-left: 0;
+    }
+    
+    span{
+      margin-left: 20px;
+    }
+  }
 }
 
-.hide{
-  display: none;
-}
-
-.myimg > img{
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 80px;
-  z-index: 10000;
-}
-
-.sugges{
-  min-height: $min-height;
+.suggest{
   background-color: white;
-}
 
-.sugges{
   h2{
     text-align: center;
   }
@@ -44,4 +51,139 @@ $min-height: 536px;
 // category
 .mydrop a:after{
   border-left-color: #2d2d2d !important;
+}
+
+.height-default-js{
+  background-color: white;
+}
+
+.mytable th{
+  text-align: center;
+}
+
+.product-edit{
+  color: red;
+  text-decoration: underline;
+}
+
+.cart-count {
+    color: #4a4a4a;
+    background: #fdd835;
+    height: 20px;
+    border-radius: 2px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+.bt-edit{
+  margin-bottom: 20px !important;
+}
+
+.show-quantity{
+  margin: 10px 0 0 0;
+}
+
+.buy-now{
+  margin: 10px;
+}
+
+.cart-nothing{
+  padding: 20px;
+}
+
+.gravatar_edit{
+  padding: 10px 0;
+}
+
+.myfl{
+  width: 80vh;
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  right: 20px;
+  box-shadow: 5px 10px 180px #2f2f2f;
+}
+
+.table-status{
+  width: 280px;
+}
+
+.table-status select,
+.table-status  input{
+  float: left;
+}
+
+.table-status select{
+  width: 180px;
+}
+
+.detail-total{
+  text-align: center;
+}
+
+// left admin 
+.admin-menu-left{
+  border-bottom: 1px solid #3299cc !important;
+}
+
+.admin-menu-click,
+.admin-hs .go{
+  background-color: #3299cc;
+  color: white;
+  display: block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.admin-menu-click{
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.admin-hs{
+  background-color: #3299cc;
+}
+
+.admin-menu-click .btright{
+  float: right;
+  transform: rotate(0);
+  transition: 0.5s;
+}
+
+.admin-hs .go{
+  padding: 10px 15px 10px 30px;
+}
+
+.admin-hs .go:last-child{
+   border-bottom: 1px solid #e7e7e7 !important;
+}
+
+.admin-menu-click:hover,
+.admin-hs .go:hover{
+  background-color: #2979a0 !important;
+  text-decoration: none;
+}
+
+.hide{
+  display: none;
+}
+
+.admin-select{
+  background-color: #2979a0 !important;
+}
+
+.img{
+  object-fit: cover;
+  object-position: 50% -80%;
+}
+
+.none-border{
+  border-radius: 0px !important;
+}
+
+.product .pi h4{
+  color: #123d50;
 }

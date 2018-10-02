@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
-  include ApplicationHelper
-  before_action :load_categories_sort, only: :home
+  before_action :load_categories_sort, :load_recently, only: :home
   
   def home
     @hot = Product.hot_trend

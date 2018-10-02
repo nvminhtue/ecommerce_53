@@ -1,0 +1,52 @@
+<div class="row fix height-default-js">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8 login-view">
+    <h1>
+      <%= t(".update") %>
+    </h1>
+    <%= form_for @user, url: admin_user_path do |f| %>
+      <%= render "shared/error_messages" %>
+      
+      <%= f.label :role %>
+      <!-- role select -->
+      <% products_option = "" %>
+      <% load_role.each do |r| %>
+        <% if @user.role == r[0] %>
+          <% products_option += "<option selected>"+r[0]+"</option>" %>
+        <% else %>
+          <% products_option += "<option>"+r[0]+"</option>" %>
+        <% end %>
+      <% end %>
+      <%= f.select :role, products_option.html_safe, {},
+       { class: "form-control sort-cate"  }
+      %>
+      <!-- /role select -->
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <%= f.label :phone %>
+      <%= f.telephone_field :phone, class: "form-control" %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control" %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      
+      <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank">
+          <%= t(".change") %></a>
+      </div>
+      <%= f.submit t(".save"), class: "btn btn-primary btn-block bt-edit" %>
+    <% end %>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

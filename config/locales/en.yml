@@ -1,4 +1,6 @@
 en:
+  plslogin: Please login !!!
+
   controllers:
     products_controller:
       warning: Product not found
@@ -15,9 +17,19 @@ en:
       update: "Update"
       signup: Sign Up
       sell: "Sell"
+      cart: Cart
+      his: History
+      admin: Admin
     footer:
       authors: "Authors: "
       name: "Hà Văn Đồng | Nguyễn Viết Minh Tuệ"
+    admin_left:
+      dash: Dashboard
+      mana_user: User Manager
+      mana_prod: Product Manager
+      mana_cate: Category Manager
+      mana_suggest: Suggetion Manager
+      mana_orders: Order Manager
   sessions:
     warning: "You are currently logged in"
     back: "Welcome back %{user_name}"
@@ -29,6 +41,19 @@ en:
   static_pages:
     title: "E-Commerce"
     home: "Home"
+    carousel:
+      slide_1_title: Living room
+      slide_1_content: Living Room furniture to suit your style.
+      slide_2_title: Office
+      slide_2_content: Office furniture to suit your style.
+      slide_3_title: Hallway
+      slide_3_content: Hallway furniture to suit your style.
+      next: Next
+      prev: Previous
+    home:  
+      trend: HOT TRENDS
+      update: PRODUCT UPDATES
+      recently: YOUR RECENTLY VIEWED ITEMS
   shared:
     error_messages:
       form: "The form contains"
@@ -47,8 +72,11 @@ en:
     info: "Product is not found"
     danger: "Product can not save"
     link: "%{u}"
+    product_row:
+      add: ADD TO CART
     index:
       title: All Products
+      title_sort: PRODUCTS
     new:
       title: "New product"
       sell: "Sell"
@@ -56,9 +84,17 @@ en:
       currency: " VND"
       rate: "Rating %{u}"
       update: "Update"
+      not_rated: You have not rated this product, please rate it with us.
+      ever_rated: You have rated the product.
+      decrip: Description
+      title: PRODUCT DETAIL
+      rating: Rating
+      addcart: ADD TO CART
+      seecart: See your shopping cart
     edit:
       title: Update product
       save: "Save changes"
+      
   users:
     welcome: "Welcome %{u} to Furniture E-Commerce"
     danger: "Invalid email/password"
@@ -76,10 +112,57 @@ en:
     new:
       signup: "Sign up"
       create: "Create account"
-  products:
-    show:
-      not_rated: You have not rated this product, please rate it with us.
-      ever_rated: You have rated the product.
+
   suggestions:
     new:
       h2: Suggestion
+
+  admin: 
+    users:
+      destroy:
+        delete: Deleted user.
+        delete_fail: Can't delete user.
+      update:
+        updated: Updated user.
+      edit:
+        save: SAVE
+      new:
+        new_title: CREATE NEW USER
+        save: CREATE
+      index:
+        mana_user: MANAGER USER
+        title_table: Users
+        add_new: Add new user
+    products:
+      destroy:
+        destroy-success: Deleled product.
+        destroy-fail: Can't delete product.
+      update:
+        success: Updated product.
+      create:
+        created: Created product.
+      index:
+        add_new: Add new product.
+    categories:
+      index:
+        title_head: MANAGER CATEGORY
+        title_table: PRODUCTS
+        add_new: Add new category
+      create:
+        created: Created category.
+        created-fail: Can't create category.
+      update:
+        success: Updated category.
+      destroy:
+        destroy-success: Deleted category.
+        destroy-fail: Can't delete category.
+    suggestions:
+      index: 
+        title_head: SUGGETION MANAGER
+        title_table: Suggestion
+      update:
+        updated: Updated suggestion.
+        update-fail: Can't update suggestion.
+             
+
+

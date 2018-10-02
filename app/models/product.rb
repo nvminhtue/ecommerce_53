@@ -1,10 +1,12 @@
 class Product < ApplicationRecord
   VALID_MONEY_REGEX = /d*(\.d{1,2})?/
-  has_many :ratings
+
+  has_many :ratings, dependent: :destroy
   has_many :users, through: :ratings
-  has_many :order_details
+  has_many :detail_orders, dependent: :destroy
   belongs_to :category
   mount_uploader :picture, PictureUploader
+
   validates :name, presence: true, uniqueness: true,
     length: {maximum: Settings.product.name._max}
   validates :description, presence: true,
@@ -14,9 +16,9 @@ class Product < ApplicationRecord
   validates :rate, presence: true
 
   scope :hot_trend, -> do
-    joins(:order_details)
-    .group("order_details.product_id")
-    .order("count(order_details.product_id) DESC")
+    joins(:detail_orders)
+    .group("detail_orders.product_id")
+    .order("count(detail_orders.product_id) DESC")
     .limit(12)
   end
   scope :sort_alphabet_az, ->{order "name"}
@@ -27,13 +29,11 @@ class Product < ApplicationRecord
     .group("products.id")
     .order("(sum(ratings.rating)/count(products.id)) desc")
   end
-  scope :sort_category, -> category do
-    joins(:category)
-    .where("categories.name = '#{category}'")
-  end
-  scope :sort_category_children, -> children_id do
-    joins(:category)
-    .where("categories.id IN (?)", children_id)
+  scope :sort_category, -> category_id {where category_id: category_id}
+  scope :sort_category_children, -> categories_id do
+    where("category_id IN (?)", categories_id)
   end
   scope :sort_product_updated, ->{order("created_at desc").limit(12)}
+  scope :recently_products, -> list {where "id in (?)", list}
+  scope :select_col, ->{attribute_names}
 end

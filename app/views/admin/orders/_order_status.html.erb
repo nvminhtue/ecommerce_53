@@ -1,0 +1,16 @@
+<td class="table-status">
+  <% status_option = "" %>
+  <% status_order.each do |status| %>
+    <% if order.status == status %>
+      <% status_option += "<option selected>"+status+"</option>" %>
+    <% else %>
+      <% status_option += "<option>"+status+"</option>" %>
+    <% end %>
+  <% end %>
+
+  <%= form_for order, url: admin_order_path(order) do |f| %>
+    <%= f.select :status, status_option.html_safe, {},
+   {class: "form-control sort-cate"} %>
+    <%= f.submit :change, class: "btn btn-primary" %>
+  <% end %>
+</td>

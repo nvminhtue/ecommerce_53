@@ -34,6 +34,7 @@ module SessionsHelper
   def log_out
     forget current_user
     session.delete(:user_id)
+    session.delete(:order_id)
     @current_user = nil
   end
 
@@ -48,5 +49,17 @@ module SessionsHelper
 
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  def current_order
+    if session[:order_id].present?
+      Order.find(session[:order_id])
+    else
+      if logged_in?
+        current_user.orders.build
+      else
+        Order.new
+      end
+    end
   end
 end

@@ -2,7 +2,7 @@
   <% child_category = children_categories(cate.id) %>
   <% if child_category.count > 0 %>
   <li class="dropdown-submenu mydrop">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= cate.name %> </a>
+    <%= link_to cate.name, products_path(category: cate.id), class: "dropdown-toggle" %>
     <% if child_category.any? %>
       <% child_category.each do |child| %>
         <% categories.delete(child) %>
@@ -13,6 +13,6 @@
     <% end %>   
   </li>
   <% else %>
-    <li><a href="#"><%= cate.name %></a></li>
+  <li><%= link_to cate.name, products_path(category: cate.id) %></li>
   <% end %>
 <% end %>

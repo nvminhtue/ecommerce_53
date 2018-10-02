@@ -1,43 +1,40 @@
 class ProductsController < ApplicationController
-  include ProductLib
-  before_action :load_product, only: %i(edit show update)
+  before_action :load_product, :init_resentlies, only: %i(edit show update)
+  before_action :load_categories_sort, except: :show
+
   def index
-    @products = Product.paginate(page: params[:page])
-  end
+    @category_id = params[:category]
+    @type_sort = params[:type_sort]
 
-  def create
-    @product = Product.new product_params
-    if @product.save
-      flash[:success] = t ".upload"
-      redirect_to @product
+    if @category_sort.blank? && @type_sort.blank?
+      @products = Product.sort_product_updated.paginate(page: params[:page],
+       per_page: Settings.paginate_for.sort_page)
     else
-      flash[:danger] = t ".danger"
-      render :new
+      @products = sort_style @category_id, @type_sort
     end
-  end
 
-  def new
-    @product = Product.new
+    render "products/index"
   end
-
-  def edit; end
 
   def show
+    @detail_order = current_order.detail_orders.build
     @product_ratings = Rating.product_rating(@product.id)
     @product_on = star_on @product_ratings
 
-    # current_user.id !!!
-    @user_rating = Rating.user_rating(@product.id,1)
-    @user_on = user_star_on @user_rating[0]
+    if logged_in?
+      @user_rating = Rating.user_rating(@product.id, current_user.id)
+      @user_on = user_star_on @user_rating[0]
+    end
+
+    add_resently @product.id
   end
 
   def rating
     load_product
-    update = @product.ratings.find_by(user_id: 1)
+    update = @product.ratings.find_by(user_id: current_user.id)
 
     if update.blank?
-      # current_user.id !!!
-      Rating.create!(user_id: 1,
+      Rating.create!(user_id: current_user.id,
        product_id: @product.id, rating: params[:point])
     else
       update.update_attributes(rating: params[:point])
@@ -46,19 +43,8 @@ class ProductsController < ApplicationController
     show
   end
 
-  def update
-    if @product.update_attributes product_params
-      flash[:success] = t ".success"
-      redirect_to @product
-    else
-      render :edit
-    end
-  end
-
-  def destroy; end
-
   def load_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
     return if @product.present?
     flash[:info] = t ".info"
     redirect_to root_path
@@ -68,5 +54,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product)
       .permit :name, :description, :rate, :price, :picture, :category, :id
+  end
+
+  def validation_login
+    flash[:warning] = t ".plslogin"
+    redirect_to root_path
   end
 end

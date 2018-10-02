@@ -13,6 +13,9 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require jquery.min
+//= require jquery_ujs
+//= require_tree .
 //= require bootstrap.min
+//= require metisMenu.min
+//= require sb-admin-2

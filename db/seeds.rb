@@ -1,35 +1,35 @@
 # test login
-# User.create!(name: "Minh Tue",
-#   email: "nvminhtue@gmail.com",
-#   address: "16 Ly Thuong Kiet",
-#   phone: "0905507959",
-#   password: "123123",
-#   password_confirmation: "123123",
-#   role: 1
-# )
-# User.create!(name: "Ha Van Dong",
-#   email: "dong@gmail.com",
-#   address: "16 Ly Thuong Kiet",
-#   phone: "0905507959",
-#   password: "123123",
-#   password_confirmation: "123123",
-#   role: 1
-# )
+User.create!(name: "Minh Tue",
+  email: "nvminhtue@gmail.com",
+  address: "16 Ly Thuong Kiet",
+  phone: "0905507959",
+  password: "123123",
+  password_confirmation: "123123",
+  role: 1
+)
+User.create!(name: "Ha Van Dong",
+  email: "dong@gmail.com",
+  address: "16 Ly Thuong Kiet",
+  phone: "0905507959",
+  password: "123123",
+  password_confirmation: "123123",
+  role: 1
+)
 
-# 10.times do |n|
-#   name  = Faker::Name.name
-#   email = "example-#{n+1}@railstutorial.org"
-#   password = "password"
-#   address = "16 Ly Thuong Kiet"
-#   phone = "0905507959"
+10.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  address = "16 Ly Thuong Kiet"
+  phone = "0905507959"
 
-#   User.create!(name: name,
-#     email: email,
-#     password: password,
-#     password_confirmation: password,
-#     address: address,
-#     phone: phone)
-# end
+  User.create!(name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    address: address,
+    phone: phone)
+end
 # /test login
 
 # test category
@@ -45,39 +45,41 @@ Category.create!(name: "Ban")
 # /test category
 
 # test hot trend
-# Product.create!(name: "ssd",
-#   description: "abc",
-#   category_id: 1,
-#   quantity: 1,
-#   price: 100
-# )
+Product.create!(name: "A",
+  description: "A",
+  category_id: 1,
+  quantity: 1,
+  price: 100
+)
 
-# 12.times do
-#   rand = 2+Random.rand(7)
-#   Product.create!(name: Faker::Name.unique.name,
-#     description: Faker::Lorem.sentence(4),
-#     image: "product/#{rand}.jpg",
-#     category_id: rand,
-#     quantity: rand,
-#     price: rand
-#   )
-# end
+12.times do
+  rand = 2+Random.rand(7)
+  Product.create!(name: Faker::Name.unique.name,
+    description: Faker::Lorem.sentence(4),
+    category_id: rand,
+    quantity: rand,
+    price: rand
+  )
+end
 
-# 10.times do
-#   user_id = 1+Random.rand(4)
-#   o = Order.create!(user_id: user_id,
-#     status: "purchased"
-#   )
+30.times do
+  user_id = 1+Random.rand(4)
+  o = Order.create!(user_id: user_id,
+    status: 1,
+    total: rand(100..900),
+    created_at: rand(1.year).seconds.ago
 
-#   4.times do
-#     r = 1+Random.rand(12)
-#     OrderDetail.create!(order_id: o.id,
-#       product_id: r,
-#       quantity: r,
-#       price: r+1000000
-#     )
-#   end
-# end
+  )
+
+  4.times do
+    r = 1+Random.rand(12)
+    DetailOrder.create!(order_id: o.id,
+      product_id: r,
+      quantity: r,
+      price: r+1000000
+    )
+  end
+end
 # /test hot trend
 
 # test rating
@@ -113,34 +115,31 @@ Category.create!(name: "Ban")
 # Rating.create!(user_id: 2, product_id: 3, rating: 3)
 # /test rating
 
-10.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  address = "16 Ly Thuong Kiet"
-  phone = "0905507959"
+# test sort
+# Category.create!(name: "Ghe")
+# Category.create!(name: "Ghe van phong",parent_id: 1)
+# Category.create!(name: "Ghe game",parent_id: 1)
+# Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
+# Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
+# Category.create!(name: "Ghe giam doc",parent_id: 5)
+# Category.create!(name: "Ghe game 123",parent_id: 3)
+# Category.create!(name: "Ghe game 456",parent_id: 3)
+# Category.create!(name: "Ban")
 
-  User.create!(name: name,
-    email: email,
-    password: password,
-    password_confirmation: password,
-    address: address,
-    phone: phone)
-end
+# Product.create!(name: "A",
+#   description: "none",
+#   image: "product/2.jpg",
+#   category_id: 1,
+#   quantity: 1,
+#   price: 1
+# )
 
-9.times do |n|
-  n = n + 1
-  p_name  = "Product #{n}"
-  p_description = "description"
-  p_category = "None"
-  p_price = "#{n*1000000}"
-  p_rate = 4.5
-
-  Product.create!(name: p_name,
-    description: p_description,
-    image: "product/default-product.jpg",
-    category: p_category,
-    price: p_price,
-    rate: p_rate)
-end
+# Product.create!(name: "Z",
+#   description: "none",
+#   image: "product/4.jpg",
+#   category_id: 1,
+#   quantity: 1,
+#   price: 1
+# )
+# /test sort
 

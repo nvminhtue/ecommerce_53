@@ -1,0 +1,14 @@
+<%= form_for suggest, url: admin_suggestion_path(suggest) do |f| %>
+  <% status_option = "" %>
+  <% status_suggestion.each do |status| %>
+    <% if suggest.status == status %>
+      <% status_option += "<option selected>"+status+"</option>" %>
+    <% else %>
+      <% status_option += "<option>"+status+"</option>" %>
+    <% end %>
+  <% end %>
+  
+  <%= f.select :status, status_option.html_safe, {},
+   {class: "form-control sort-cate"} %>
+  <%= f.submit :change, class: "btn btn-primary" %>
+<% end %>

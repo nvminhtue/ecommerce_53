@@ -1,13 +1,42 @@
 en:
+  controllers:
+    users_controller:
+      welcome: "Welcome %{u} to Furniture E-Commerce"
+      danger: "Invalid email/password"
+      updated: "Successful updated"
+      info: "Please log in."
+      permit: "No access permitted!"
+      no_found: User's not found
+    sessions_controller:
+      warning: "You are currently logged in"
+      back: "Welcome back %{u}"
   layouts:
     header:
       logo: "E-Commerce"
       home: "Home"
       product: "Product"
+      user: User
+      login: Login
+      update: "Update"
     footer:
       authors: "Authors: "
-      dong: "Ha Van Dong"
-      tue: "Nguyen Viet Minh Tue"
+      name: "Ha Van Dong | Nguyen Viet Minh Tue"
+  sessions:
+    new:
+      signup: "Sign up now"
+      remember: "Remember me on this computer"
+      new_user: "New user? "
   static_pages:
     title: "E-Commerce"
-    home: "Home asds"
+    home: "Home"
+  users:
+    index:
+      title: "Admin Control Site"
+    edit:
+      edit_user: "Edit user"
+      save: "Save changes"
+      update: Update your profile
+      change: Change picture
+    new:
+      signup: "Sign up"
+      create: "Create account"

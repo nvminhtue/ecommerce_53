@@ -33,15 +33,15 @@
 # /test login
 
 # test category
-Category.create!(name: "Ghe")
-Category.create!(name: "Ghe van phong",parent_id: 1)
-Category.create!(name: "Ghe game",parent_id: 1)
-Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
-Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
-Category.create!(name: "Ghe giam doc",parent_id: 5)
-Category.create!(name: "Ghe game 123",parent_id: 3)
-Category.create!(name: "Ghe game 456",parent_id: 3)
-Category.create!(name: "Ban")
+# Category.create!(name: "Ghe")
+# Category.create!(name: "Ghe van phong",parent_id: 1)
+# Category.create!(name: "Ghe game",parent_id: 1)
+# Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
+# Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
+# Category.create!(name: "Ghe giam doc",parent_id: 5)
+# Category.create!(name: "Ghe game 123",parent_id: 3)
+# Category.create!(name: "Ghe game 456",parent_id: 3)
+# Category.create!(name: "Ban")
 # /test category
 
 # test hot trend
@@ -113,34 +113,41 @@ Category.create!(name: "Ban")
 # Rating.create!(user_id: 2, product_id: 3, rating: 3)
 # /test rating
 
-10.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  address = "16 Ly Thuong Kiet"
-  phone = "0905507959"
+# test sort
+Category.create!(name: "Ghe")
+Category.create!(name: "Ghe van phong",parent_id: 1)
+Category.create!(name: "Ghe game",parent_id: 1)
+Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
+Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
+Category.create!(name: "Ghe giam doc",parent_id: 5)
+Category.create!(name: "Ghe game 123",parent_id: 3)
+Category.create!(name: "Ghe game 456",parent_id: 3)
+Category.create!(name: "Ban")
 
-  User.create!(name: name,
-    email: email,
-    password: password,
-    password_confirmation: password,
-    address: address,
-    phone: phone)
+Product.create!(name: "A",
+  description: "none",
+  image: "product/2.jpg",
+  category_id: 1,
+  quantity: 1,
+  price: 1
+)
+
+Product.create!(name: "Z",
+  description: "none",
+  image: "product/4.jpg",
+  category_id: 1,
+  quantity: 1,
+  price: 1
+)
+
+10.times do |i|
+  rand = 2+Random.rand(7)
+  Product.create!(name: Faker::Pokemon.name+"_"+i.to_s,
+    description: "none",
+    image: "product/2.jpg",
+    category_id: rand,
+    quantity: rand,
+    price: rand
+  )
 end
-
-9.times do |n|
-  n = n + 1
-  p_name  = "Product #{n}"
-  p_description = "description"
-  p_category = "None"
-  p_price = "#{n*1000000}"
-  p_rate = 4.5
-
-  Product.create!(name: p_name,
-    description: p_description,
-    image: "product/default-product.jpg",
-    category: p_category,
-    price: p_price,
-    rate: p_rate)
-end
-
+# /test sort

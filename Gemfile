@@ -3,6 +3,7 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "2.5.1"
 
+gem "awesome_print"
 gem "bcrypt", "3.1.12"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-sass", "3.3.7"
@@ -18,6 +19,7 @@ gem "jquery-rails", "~> 4.3", ">= 4.3.1"
 gem "mini_magick", "4.7.0"
 gem "minitest", group: :test
 gem "minitest-reporters", group: :test
+gem "pry"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.1"
 gem "rails-controller-testing"

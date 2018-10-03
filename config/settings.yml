@@ -9,3 +9,5 @@ user:
     _min: 6
 remember_me:
   set: "1"
+static_pages:
+  product_quantity: 12

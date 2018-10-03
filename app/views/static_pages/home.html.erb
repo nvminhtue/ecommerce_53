@@ -1,1 +1,140 @@
-<h1><%= t("static_pages.home") %></h1>
+<!-- 
+
+
+
+  Gửi anh chị file này em chưa dùng i18n vì đây chỉ là bản demo
+
+
+
+
+-->
+<!-- slide -->
+<div class="row fix">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 fix">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag("slide/slide-demo6.jpg") %>
+      <div class="carousel-caption">
+        <a href="#" class="khung">
+          <h3>Hà Văn Đồng</h3>
+          <p>Cho xem thôi không bán !</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag("slide/slide-demo4.jpg") %>
+      <div class="carousel-caption">
+        <a href="#" class="khung">
+          <h3>Nguyễn Viết Minh Tuệ</h3>
+          <p>Xàm đó, mua đi rẻ lắm !</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag("slide/slide-demo5.jpg") %>
+      <div class="carousel-caption">
+        <a href="#" class="khung">
+          <h3>kaka</h3>
+          <p>Thank you!</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="col-sm-1"></div>
+</div>
+</div>
+<!-- /slide -->
+
+<!-- Product -->
+<!-- Sản phẩm nổi bật 2018 -->
+<div class="row fix">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 fix">
+  <div class="prod-title">
+    <a href="javascript:void(0)" class="nocur">
+      <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> SẢN PHẨM NỘI BẬT 2018
+    </a>
+  </div>
+  <div class="row product">
+    <div class="col-sm-12">
+      <% @hot.each do |product| %>
+      <div class="col-sm-2 pi fix">
+        <%= link_to product do %>
+          <%= image_tag(product.image, class: "img") %>
+          <div class="content">
+            <div class="line"></div>
+            <p class="citem">$ <%= product.price %></p>
+            <h4 class="citem"><%= product.name %></h4>
+          </div>
+          <div class="topbg">&nbsp;</div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+<!-- /Sản phẩm nổi bật 2018 -->
+
+<!-- SORT -->
+<div class="row pd-sort fix">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 fix">
+  <div class="prod-title">
+    <a href="#">
+      Product sort demo
+    </a>
+    <form action="#" class="sort-left">
+      <select class="form-control">
+          <option>A - Z</option>
+          <option>Z - A</option>
+          <option>Price</option>
+          <option>Rating</option>
+      </select>
+      <input class="btn btn-default" type="submit" value="Filter">
+      <div style="clear:both"></div>
+    </form>
+  </div>
+  <div class="row product">
+    <div class="col-sm-12">
+      <% @hot.each do |product| %>
+      <div class="col-sm-2 pi fix">
+        <%= link_to product do %>
+          <%= image_tag(product.image, class: "img") %>
+          <div class="content">
+            <div class="line"></div>
+            <p class="citem">$ <%= product.price %></p>
+            <h4 class="citem"><%= product.name %></h4>
+          </div>
+          <div class="topbg">&nbsp;</div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-sm-1"></div>
+</div>
+<!-- /SORT -->
+<!-- /Product -->

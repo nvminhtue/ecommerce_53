@@ -21,6 +21,7 @@ node_modules/
 
 # My gitignore
 config/database.yml
+public/*
 
 tmp/*
 test/*

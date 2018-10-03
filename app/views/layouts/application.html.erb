@@ -8,9 +8,11 @@
       "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application",
       "data-turbolinks-track": "reload" %>
+    <%= favicon_link_tag "logo.ico" %>
   </head>
 
   <body>
+    <%= debug(params) if Rails.env.development? %>
     <%= render "layouts/header" %>
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

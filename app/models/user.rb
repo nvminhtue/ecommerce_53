@@ -2,6 +2,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   VALID_PHONE_REGEX = /(09|03|05|07|08)+([0-9]{8})\b/
   attr_accessor :remember_token
+  has_many :orders
   before_save ->{email.downcase!}
   validates :name, presence: true, length: {maximum: Settings.user.name._max}
   validates :email, presence: true, length: {maximum: Settings.user.email._max},

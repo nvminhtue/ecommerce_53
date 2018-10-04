@@ -1,5 +1,7 @@
 en:
   controllers:
+    carts_controller:
+      success: "Successful order "
     users_controller:
       welcome: "Welcome %{u} to Furniture E-Commerce"
       danger: "Invalid email/password"
@@ -15,12 +17,25 @@ en:
       success: "Product has been updated"
       upload: "Product is uploaded"
       info: "Product is not found"
+  carts:
+    success: "Successful order "
+    shopping_cart:
+      nothing: "Nothing to show"
+      back: "Back to shopping"
+    cart_row:
+      update: "Update Quantity"
+      delete: Delete
+      confirm: "Are you sure you wish to delete the product %{detail} from your cart?"
   layouts:
+    cart_text:
+      item: "%{size} Items in Cart"
+      checkout: "Checkout"
     header:
       logo: "E-Commerce"
       home: "Furniture.com"
       product: "Product"
-      user: User
+      history: "Shopping history"
+      users: Users
       login: Login
       update: "Update"
       signup: Sign Up
@@ -28,6 +43,19 @@ en:
     footer:
       authors: "Authors: "
       name: "Hà Văn Đồng | Nguyễn Viết Minh Tuệ"
+  orders:
+    permit: "No permittion"
+    order_row:
+      order: "Order %{n} "
+      history: "History"
+      total: "Total Bill: "
+      date: "Shoping Date: "
+      status: "Order status: "
+    show:
+      title: "Detail history order"
+      unit: "Unit Price: "
+      quantity: "Quantity: "
+      total: "Total price"
   sessions:
     new:
       signup: "Sign up now"
@@ -35,7 +63,8 @@ en:
       new_user: "New user? "
   static_pages:
     title: "E-Commerce"
-    home: "Home"
+    home:
+      success: "Successful order "
   shared:
     error_messages:
       form: "The form contains"
@@ -62,8 +91,9 @@ en:
       title: Update product
       save: "Save changes"
   users:
+    delete: "User deleted"
     index:
-      title: "Admin Control Site"
+      title: "All users"
     edit:
       edit_user: "Edit user"
       save: "Save changes"

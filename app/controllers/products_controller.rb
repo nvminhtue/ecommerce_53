@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :load_product, only: %i(edit show update)
   def index
     @products = Product.paginate(page: params[:page])
+    @detail_order = current_order.detail_orders.build
   end
 
   def create

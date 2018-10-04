@@ -1,0 +1,37 @@
+<div class="well">
+
+  <div class="row">
+    <div class="col-xs-8">
+      <h4><%= product.name %></h4>
+    </div>
+    <div class="col-xs-4">
+      <%= form_for detail_order, remote: true do |f| %>
+        <h4 class="text-right">
+          <%= t("orders.show.unit") %><span style="color: green">
+          <%= number_to_currency(product.price, unit: "VND", format: "%n %u")%>
+          </span></h4>
+        <div class="row">
+          <div class="col-xs-4">
+            <%= f.number_field :quantity, value: detail_order.quantity.to_i,
+              class: "form-control", min: 1 %>
+            <%= f.hidden_field :product_id, value: product.id %>
+          </div>
+          <div class="col-xs-8 text-right">
+            <div class="btn-group">
+              <%= f.submit t(".update"), class: "btn btn-primary"%>
+              <%= link_to t(".delete"), detail_order,
+                {data: {confirm: t(".confirm",
+                  detail: detail_order.product.name)},
+                method: :delete, remote: true, class: "btn btn-danger"}%>
+            </div>
+          </div>
+        </div>
+        <h4 class="text-right"><%= t"orders.show.total" %>
+          <span style="color: green">
+          <%= number_to_currency(detail_order.product.price * detail_order.quantity,
+            unit: "VND", format: "%n %u") %></span></h4>
+      <% end %>
+
+    </div>
+  </div>
+</div>

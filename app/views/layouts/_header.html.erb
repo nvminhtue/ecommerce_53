@@ -44,9 +44,10 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="cart.html">
+          <%= link_to "Cart", cart_path %>
             <span class="glyphicon glyphicon-shopping-cart"></span>
             Cart
+            <%= render "layouts/cart_text" %>
           </a>
         </li>
         <% if logged_in? %>
@@ -55,6 +56,12 @@
               <span class="fa fa-history"></span> History
             </a>
           </li>
+          <li><%= link_to t(".product"), products_path %></li>
+          <li><%= link_to t(".history"), history_path %></li>
+          <% if current_user.admin? %>
+            <li><%= link_to t(".user"), users_path %></li>
+            <li><%= link_to t(".sell"), upload_path %></li>
+          <% end %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="fa fa-user" aria-hidden="true"></i>
@@ -71,8 +78,6 @@
                     <%= t(".logout") %>
                 <% end %>
               </li>
-              <li><%= link_to t(".product"), products_path %></li>
-              <li><%= link_to t(".sell"), upload_path %></p>
             </ul>
           </li>
         <% else %>

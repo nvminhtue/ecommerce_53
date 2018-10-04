@@ -25,7 +25,8 @@
       <img src="<%= @product.image %>" alt="">
     </div>
     <div class="col-sm-5 pd-right">
-      <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i> <%= @product.name %></h4>
+      <h4><i class="fa fa-check" aria-hidden="true" Style="color:green"></i>
+        <%= @product.name %></h4>
       <div class="start">
         <%= link_to "#" do %>
           <%= image_tag("rating/star-on.png") %>
@@ -105,7 +106,9 @@
       <b><%= t(".rate", u: @product.rate.to_s) %></b>
       <h3><%= number_to_currency(@product.price,
         unit: "VND", format: "%n %u") %></h3>
-      <%= link_to t(".update"), edit_product_path(@product) %>
+      <% if logged_in? && current_user.admin? %>
+        <%= link_to t(".update"), edit_product_path(@product) %>
+      <%end%>
     </section>
   </aside>
 </div>

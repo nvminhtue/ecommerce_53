@@ -1,0 +1,29 @@
+<% provide :title, t(".history") %>
+<h1><%=t".history"%></h1>
+<%n=0%>
+<% @history_orders.each do |history| %>
+  <% if history.detail_orders.present? && history.status != "Idle"%>
+    <%n=n+1%>
+    <h3><%=link_to t(".order",n: n ),
+    order_path(history.id), history:history %></h3>
+    <h5 class="text-right"><%= t".total" %><span style="color: blue">
+      <%= number_to_currency(history.total, unit: "VND",
+      format: "%n %u") %></span></h4>
+    <h5 class="text-right"><%= t".date" %><span style="color: blue">
+      <%= history.created_at.to_date%></span></h4>
+      <% if current_user.customer? %>
+        <h5 class="text-right"><%= t".status" %><span style="color: green">
+          <%= history.status%></span></h4>
+      <% else %>
+        <%=form_for history do |f| %>
+          <div class="form-group">
+            <%= f.label :status %>
+            <%= f.select :status, Order.statuses.keys.to_a %>
+          </div>
+          <%= f.submit "Confirm", class: "btn btn-primary" %>
+        <%end %>
+        <h5 class="text-right"><%= t".status" %><span style="color: green">
+          <%= history.status%></span></h4>
+      <%end%>
+  <% end %>
+<%end%>

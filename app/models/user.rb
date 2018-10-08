@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :ratings
+  has_many :products, through: :ratings
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   VALID_PHONE_REGEX = /(09|03|05|07|08)+([0-9]{8})\b/
   attr_accessor :remember_token

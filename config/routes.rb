@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  post "/product_rating/:id", to: "products#rating", as: "rating"
+  get "/suggestions", to: "suggestions#new"
+  post "/suggestions", to: "suggestions#create"
 
   resources :products
   resources :users

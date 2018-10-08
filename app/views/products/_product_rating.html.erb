@@ -1,0 +1,7 @@
+<% for i in 1..5 %>
+  <% if i <= product_on %>
+    <%= image_tag("rating/star-on.png") %>
+  <% else %>
+    <%= image_tag("rating/star-off.png") %>
+  <% end %>
+<% end %>

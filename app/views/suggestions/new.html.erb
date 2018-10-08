@@ -1,0 +1,24 @@
+<div class="row fix sugges">
+<div class="col-sm-2"></div>
+<div class="col-sm-8 fix">
+  <h2><%= t ".h2" %></h2>
+  <%= form_for @sugges do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+  
+  <%= f.label :description %>
+  <%= f.text_field :description, class: "form-control" %>
+
+  <%= f.label :cartegory %>
+  <%= f.text_field :cartegory_id, class: "form-control" %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image, class: "form-control" %>
+  
+  <br>
+  <%= f.submit "Send suggestion", class: "btn btn-primary btsuggest" %>
+  <% end %>
+<div class="col-sm-2"></div>
+</div>
+</div>

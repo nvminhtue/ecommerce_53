@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
       forget(user)
     end
     flash[:success] = t("controllers.sessions_controller.back",
-     user_name: user.name)
+      user_name: user.name)
     redirect_to root_path
   end
 end

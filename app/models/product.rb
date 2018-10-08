@@ -1,4 +1,12 @@
 class Product < ApplicationRecord
+  has_many :order_details
+  has_many :ratings
+  has_many :users, through: :ratings
   validates :name, presence: true, uniqueness: true
-  default_scope -> { order(created_at: :desc) }
+  scope :hot_trend, -> do
+    joins(:order_details)
+    .group("order_details.product_id")
+    .order("count(order_details.product_id) DESC")
+    .limit(12)
+  end
 end

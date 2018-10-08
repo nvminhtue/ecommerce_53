@@ -13,3 +13,24 @@ $min-height: 536px;
     text-align:center;
   }
 }
+
+.sugges{
+  min-height: $min-height;
+  background-color: white;
+}
+
+.sugges{
+  h2{
+    text-align: center;
+  }
+
+  .btsuggest{
+    width: 100%;
+  }
+}
+
+.start{
+  a:click{
+    text-decoration: none;
+  }
+}

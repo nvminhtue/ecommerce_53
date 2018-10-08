@@ -12,6 +12,9 @@ en:
       back: "Welcome back %{user_name}"
     products_controller:
       warning: Product not found
+      rating_star:  Bạn đã dánh giá %{point} sao.
+    suggestion_controller:
+      thank: Thank you :) your feedback will be reviewed.
   layouts:
     header:
       logo: "E-Commerce"
@@ -43,3 +46,10 @@ en:
     new:
       signup: "Sign up"
       create: "Create account"
+  products:
+    show:
+      not_rated: Bạn chưa đánh giá sản phẩm, hãy đánh giá sản phẩm cùng chúng tôi.
+      ever_rated: Bạn đã từng đánh giá sản phẩm.
+  suggestions:
+    new:
+      h2: Suggestion

@@ -1,4 +1,5 @@
-<!-- 
+<!--
+
 
 
 
@@ -68,4 +69,22 @@
 </div>
 <!-- /Mô tả SP -->
 <div class="col-sm-1"></div>
+<% provide :title, @product.name %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <small><%= @product.category %></small>
+      <hr>
+      <h1>
+        <%= image_for @product %>
+        <%= @product.name %>
+      </h1>
+      <p><%= @product.description %></p>
+      <hr>
+      <b><%= t(".rate", u: @product.rate.to_s) %></b>
+      <h3><%= number_to_currency(@product.price,
+        unit: "VND", format: "%n %u") %></h3>
+      <%= link_to t(".update"), edit_product_path(@product) %>
+    </section>
+  </aside>
 </div>

@@ -1,0 +1,11 @@
+<% provide :title, t(".title") %>
+<h1><%= t ".title" %></h1>
+
+<%= will_paginate %>
+
+<div class="product">
+  <% @products.each do |product| %>
+  <%= link_to (image_tag product.picture.url), product %>
+  <% end %>
+</div>
+<%= will_paginate %>

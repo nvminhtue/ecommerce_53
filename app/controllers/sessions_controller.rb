@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     return if current_user.blank?
-    flash[:warning] = t("controllers.sessions_controller.warning")
+    flash[:warning] = t".warning"
     redirect_to root_path
   end
 
@@ -28,8 +28,8 @@ class SessionsController < ApplicationController
     else
       forget(user)
     end
-    flash[:success] = 
-      t "controllers.sessions_controller.back", user_name: user.name
+    flash[:success] = t(".back",
+     user_name: user.name)
     redirect_to root_path
   end
 end

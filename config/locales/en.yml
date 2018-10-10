@@ -1,15 +1,5 @@
 en:
   controllers:
-    users_controller:
-      welcome: "Welcome %{u} to Furniture E-Commerce"
-      danger: "Invalid email/password"
-      updated: "Successful updated"
-      info: "Please log in."
-      permit: "No access permitted!"
-      no_found: User's not found
-    sessions_controller:
-      warning: "You are currently logged in"
-      back: "Welcome back %{user_name}"
     products_controller:
       warning: Product not found
       rating_star:  You rated it {%point}.
@@ -24,10 +14,14 @@ en:
       login: Login
       update: "Update"
       signup: Sign Up
+      sell: "Sell"
     footer:
       authors: "Authors: "
       name: "Hà Văn Đồng | Nguyễn Viết Minh Tuệ"
   sessions:
+    warning: "You are currently logged in"
+    back: "Welcome back %{user_name}"
+    danger: "Invalid email/password"
     new:
       signup: "Sign up now"
       remember: "Remember me on this computer"
@@ -35,7 +29,43 @@ en:
   static_pages:
     title: "E-Commerce"
     home: "Home"
+  shared:
+    error_messages:
+      form: "The form contains"
+      error:
+        one: "%{count} error"
+        other: "%{count} errors"
+    product_error_messages:
+      form: "The form contains"
+      error:
+        one: "%{count} error"
+        other: "%{count} errors"
+  products:
+    warning: Product not found
+    success: "Product has been updated"
+    upload: "Product is uploaded"
+    info: "Product is not found"
+    danger: "Product can not save"
+    link: "%{u}"
+    index:
+      title: All Products
+    new:
+      title: "New product"
+      sell: "Sell"
+    show:
+      currency: " VND"
+      rate: "Rating %{u}"
+      update: "Update"
+    edit:
+      title: Update product
+      save: "Save changes"
   users:
+    welcome: "Welcome %{u} to Furniture E-Commerce"
+    danger: "Invalid email/password"
+    updated: "Successful updated"
+    info: "Please log in."
+    permit: "No access permitted!"
+    no_found: User's not found
     index:
       title: "Admin Control Site"
     edit:

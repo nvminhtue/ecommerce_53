@@ -105,20 +105,11 @@
     <a href="#">
       Product sort demo
     </a>
-    <form action="#" class="sort-left">
-      <select class="form-control">
-          <option>A - Z</option>
-          <option>Z - A</option>
-          <option>Price</option>
-          <option>Rating</option>
-      </select>
-      <input class="btn btn-default" type="submit" value="Filter">
-      <div style="clear:both"></div>
-    </form>
+    <%= render "products/select_sort" %>
   </div>
   <div class="row product">
     <div class="col-sm-12">
-      <% @product_home.each do |product| %>
+      <% @products_updated.each do |product| %>
       <div class="col-sm-2 pi fix">
         <%= link_to product do %>
           <%= image_tag(product.image, class: "img") %>

@@ -1,0 +1,33 @@
+<%= form_tag products_path, class: "sort-left", method: "get" do %>
+  <!-- categories select -->
+  <% products_option = "<option>-- Categories --</option>" %>
+  <% @categories_for_sort.each do |cate| %>
+    <% if @category_sort.present? && @category_sort == cate %>
+      <% products_option += "<option selected>"+cate+"</option>" %>
+    <% else %>
+      <% products_option += "<option>"+cate+"</option>" %>
+    <% end %>
+  <% end %>
+  <%= select_tag "category", products_option.html_safe,
+    class: "form-control sort-cate"
+  %>
+  <!-- /categories select -->
+  <!-- type select -->
+  <% arr_type_option = ["A-Z",
+    "Z-A",
+    "Price",
+    "Rating"] %>
+  <% type_option = "<option>-- Sort by --</option>" %>
+  <% arr_type_option.each do |type| %>
+    <% if @type_sort.present? && @type_sort == type %>
+      <% type_option += "<option selected>"+type+"</option>" %>
+    <% else %>
+      <% type_option += "<option>"+type+"</option>" %>
+    <% end %>
+  <% end %>
+  <%= select_tag "type_sort", type_option.html_safe,
+    class: "form-control sort-cate"
+  %>
+  <!-- /type select -->
+  <%= submit_tag "Filter", class: "btn btn-default" %>
+<% end %>

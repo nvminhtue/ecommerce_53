@@ -1,8 +1,14 @@
 class ProductsController < ApplicationController
+  include ApplicationHelper
   include ProductLib
   before_action :load_product, only: %i(edit show update)
+  before_action :load_categories_sort, except: :show
+
   def index
-    @products = Product.paginate(page: params[:page])
+    @category_sort = params[:category]
+    @type_sort = params[:type_sort]
+    @products = sort_style @category_sort, @type_sort
+    render "products/index"
   end
 
   def create
@@ -21,7 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def edit; end
-
+  
   def show
     @product_ratings = Rating.product_rating(@product.id)
     @product_on = star_on @product_ratings

@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   has_many :order_details
   has_many :ratings
   has_many :users, through: :ratings
+  belongs_to :category
   validates :name, presence: true, uniqueness: true
   scope :hot_trend, -> do
     joins(:order_details)

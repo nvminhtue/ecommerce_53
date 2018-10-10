@@ -15,7 +15,6 @@
 #   password_confirmation: "123123",
 #   role: 1
 # )
-# /test login
 
 # 10.times do |n|
 #   name  = Faker::Name.name
@@ -31,10 +30,24 @@
 #     address: address,
 #     phone: phone)
 # end
+# /test login
+
+# test category
+Category.create!(name: "Ghe")
+Category.create!(name: "Ghe van phong",parent_id: 1)
+Category.create!(name: "Ghe game",parent_id: 1)
+Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
+Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
+Category.create!(name: "Ghe giam doc",parent_id: 5)
+Category.create!(name: "Ghe game 123",parent_id: 3)
+Category.create!(name: "Ghe game 456",parent_id: 3)
+Category.create!(name: "Ban")
+# /test category
 
 # test hot trend
 # Product.create!(name: "ssd",
 #   description: "abc",
+#   category_id: 1,
 #   quantity: 1,
 #   price: 100
 # )
@@ -44,6 +57,7 @@
 #   Product.create!(name: Faker::Name.unique.name,
 #     description: Faker::Lorem.sentence(4),
 #     image: "product/#{rand}.jpg",
+#     category_id: rand,
 #     quantity: rand,
 #     price: rand
 #   )
@@ -67,33 +81,34 @@
 # /test hot trend
 
 # test rating
-User.create!(name: "Minh Tue",
-  email: "nvminhtue@gmail.com",
-  address: "16 Ly Thuong Kiet",
-  phone: "0905507959",
-  password: "123123",
-  password_confirmation: "123123",
-  role: 1
-)
-User.create!(name: "Ha Van Dong",
-  email: "dong@gmail.com",
-  address: "16 Ly Thuong Kiet",
-  phone: "0905507959",
-  password: "123123",
-  password_confirmation: "123123",
-  role: 1
-)
-4.times do |i|
-  rand = 2+Random.rand(7)
-  Product.create!(name: "sp #{i+1}",
-    description: "none",
-    image: "product/#{rand}.jpg",
-    quantity: rand,
-    price: rand
-  )
-end
-Rating.create!(user_id: 1, product_id: 1, rating: 1)
-Rating.create!(user_id: 2, product_id: 1, rating: 1)
-Rating.create!(user_id: 2, product_id: 2, rating: 2)
-Rating.create!(user_id: 2, product_id: 3, rating: 3)
+# User.create!(name: "Minh Tue",
+#   email: "nvminhtue@gmail.com",
+#   address: "16 Ly Thuong Kiet",
+#   phone: "0905507959",
+#   password: "123123",
+#   password_confirmation: "123123",
+#   role: 1
+# )
+# User.create!(name: "Ha Van Dong",
+#   email: "dong@gmail.com",
+#   address: "16 Ly Thuong Kiet",
+#   phone: "0905507959",
+#   password: "123123",
+#   password_confirmation: "123123",
+#   role: 1
+# )
+# 4.times do |i|
+#   rand = 2+Random.rand(7)
+#   Product.create!(name: "sp #{i+1}",
+#     description: "none",
+#     image: "product/#{rand}.jpg",
+#     category_id: rand,
+#     quantity: rand,
+#     price: rand
+#   )
+# end
+# Rating.create!(user_id: 1, product_id: 1, rating: 1)
+# Rating.create!(user_id: 2, product_id: 1, rating: 1)
+# Rating.create!(user_id: 2, product_id: 2, rating: 2)
+# Rating.create!(user_id: 2, product_id: 3, rating: 3)
 # /test rating

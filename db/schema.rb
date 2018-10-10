@@ -1,4 +1,11 @@
-ActiveRecord::Schema.define(version: 2018_10_03_010220) do
+ActiveRecord::Schema.define(version: 2018_10_05_060958) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "order_details", force: :cascade do |t|
     t.integer "order_id"
@@ -21,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_10_03_010220) do
     t.string "description"
     t.string "image", default: "product/default-product.jpg"
     t.integer "quantity"
-    t.integer "cartegory_id"
+    t.integer "category_id"
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

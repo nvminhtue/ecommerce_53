@@ -12,7 +12,7 @@ en:
       back: "Welcome back %{user_name}"
     products_controller:
       warning: Product not found
-      rating_star:  Bạn đã dánh giá %{point} sao.
+      rating_star:  You rated it {%point}.
     suggestion_controller:
       thank: Thank you :) your feedback will be reviewed.
   layouts:
@@ -48,8 +48,8 @@ en:
       create: "Create account"
   products:
     show:
-      not_rated: Bạn chưa đánh giá sản phẩm, hãy đánh giá sản phẩm cùng chúng tôi.
-      ever_rated: Bạn đã từng đánh giá sản phẩm.
+      not_rated: You have not rated this product, please rate it with us.
+      ever_rated: You have rated the product.
   suggestions:
     new:
       h2: Suggestion

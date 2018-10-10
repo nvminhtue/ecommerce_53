@@ -34,3 +34,8 @@ $min-height: 536px;
     text-decoration: none;
   }
 }
+
+// category
+.mydrop a:after{
+  border-left-color: #2d2d2d !important;
+}

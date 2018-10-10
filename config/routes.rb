@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/suggestions", to: "suggestions#new"
   post "/suggestions", to: "suggestions#create"
 
+  resources :categories
   resources :products
   resources :users
 end

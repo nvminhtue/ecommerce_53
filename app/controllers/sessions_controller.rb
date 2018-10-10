@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user&.authenticate(params[:session][:password])
       login_success @user
     else
-      flash[:danger] = t "controllers.users_controller.danger"
+      flash[:danger] = t ".danger"
       render :new
     end
   end
@@ -28,8 +28,8 @@ class SessionsController < ApplicationController
     else
       forget(user)
     end
-    flash[:success] = t("controllers.sessions_controller.back",
-      user_name: user.name)
+    flash[:success] = 
+      t "controllers.sessions_controller.back", user_name: user.name
     redirect_to root_path
   end
 end

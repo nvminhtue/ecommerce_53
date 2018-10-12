@@ -1,0 +1,10 @@
+<% @order = Order.find_by(user_id: @user.id) %>
+<h1>Dear <%= @user.name %>, </h1>
+
+<div>Welcome to the Sample App! Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+Your order request has been received and transfered on <%= @order.created_at.to_date %>
+
+<%= render partial: "orders/detail", @history = @order %></div>

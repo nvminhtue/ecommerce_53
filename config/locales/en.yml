@@ -2,6 +2,9 @@ en:
   model:
     detail_order:
       invalid: "%{product} is not valid"
+  mailers:
+    user_mailer:
+      order_sub: "Order Infomation"
   controllers:
     products_controller:
       warning: Product not found

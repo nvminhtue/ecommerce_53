@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   resources :orders
   resources :detail_orders, only: [:create, :update, :destroy]
   resources :users
+  resources :order_infos, only: [:edit]
 end

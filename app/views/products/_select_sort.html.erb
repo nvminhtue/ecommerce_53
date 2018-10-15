@@ -1,5 +1,15 @@
 <%= form_tag products_path, class: "sort-left", method: "get" do %>
   <!-- categories select -->
+  <%# products_option = "<option>-- Categories --</option>" %>
+  <%# @categories_for_sort.each do |cate| %>
+    <%# if @category_sort.present? && @category_sort == cate.name %>
+      <%# products_option += "<option selected>---"+cate.name+"</option>" %>
+    <%# else %>
+      <%# products_option += "<option>"+cate.name+"</option>" %>
+    <%# end %>
+  <%# end %>
+
+  <!-- Tue -->
   <% products_option = "<option>-- Categories --</option>" %>
   <% @categories_for_sort.each do |cate| %>
     <% if @category_id.present? && @category_id == cate.id.to_s %>
@@ -8,9 +18,16 @@
       <% products_option += "<option value='"+cate.id.to_s+"' >"+cate.name+"</option>" %>
     <% end %>
   <% end %>
-  <%= select_tag "category", products_option.html_safe,
-    class: "form-control sort-cate"
-  %>
+<!--     def nested_categories(categories)
+    categories.map do |parent, children|
+      parent.name + nested_categories(children)
+    end
+  end -->
+ <!-- Tue -->
+
+
+  <%= select_tag "category",products_option.html_safe,
+    class: "form-control sort-cate" %>
   <!-- /categories select -->
   <!-- type select -->
   <% arr_type_option = ["A-Z",

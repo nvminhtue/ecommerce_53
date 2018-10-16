@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   layout "admin_layout"
-  before_action :load_categories_select, only: %i(edit new)
+  before_action :load_categories_select, only: %i(edit update new)
   before_action :load_category, only: %i(edit update destroy)
 
   def index
@@ -12,11 +12,16 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update_attributes category_params
-      flash[:success] = t ".success"
-      redirect_to admin_categories_path
-    else
+    if @category.id.to_s == params[:category][:parent_id]
+      flash[:warning] = t ".cannott"
       render :edit
+    else
+      if @category.update_attributes category_params
+        flash[:success] = t ".success"
+        redirect_to admin_categories_path
+      else
+        render :edit
+      end
     end
   end
 

@@ -29,13 +29,9 @@ class Product < ApplicationRecord
     .group("products.id")
     .order("(sum(ratings.rating)/count(products.id)) desc")
   end
-  scope :sort_category, -> category do
-    joins(:category)
-    .where("categories.name = '#{category}'")
-  end
-  scope :sort_category_children, -> children_id do
-    joins(:category)
-    .where("categories.id IN (?)", children_id)
+  scope :sort_category, -> category_id {where category_id: category_id}
+  scope :sort_category_children, -> categories_id do
+    where("category_id IN (?)", categories_id)
   end
   scope :sort_product_updated, ->{order("created_at desc").limit(12)}
   scope :recently_products, -> list {where "id in (?)", list}

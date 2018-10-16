@@ -25,7 +25,7 @@
           </a>
           <ul class="dropdown-menu multi-level">
           <% @array_categories.each do |category| %>
-            <li><%= link_to category.name, products_path(category: category.name) %></li>
+            <li><%= link_to category.name, products_path(category: category.id) %></li>
             <% child_category = children_categories(category.id) %>
             <% if child_category.any? %>
               <% child_category.each do |child| %>
@@ -48,22 +48,16 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <li>
-            <!-- branch all -->
-            <%#= link_to cart_path do %>
-            <%= link_to "#" do %>
+            <%= link_to cart_path do %>
               <span class="glyphicon glyphicon-shopping-cart"></span> 
               <%= t(".cart") %>
               <span class="cart-count">
-                <!-- branch all -->
-                <%#= current_order.detail_orders.size %>
-                0
+                <%= current_order.detail_orders.size %>
               </span>
             <% end %>
           </li>
           <li>
-            <!-- branch all -->
-            <%#= link_to history_path do %>
-            <%= link_to do %>
+            <%= link_to history_path do %>
               <span class="fa fa-history"></span> <%= t(".history") %>
             <% end %>
           </li>

@@ -3,22 +3,21 @@ class ProductsController < ApplicationController
   before_action :load_categories_sort, except: :show
 
   def index
-    @category_sort = params[:category]
+    @category_id = params[:category]
     @type_sort = params[:type_sort]
 
     if @category_sort.blank? && @type_sort.blank?
       @products = Product.sort_product_updated.paginate(page: params[:page],
        per_page: Settings.paginate_for.sort_page)
     else
-      @products = sort_style @category_sort, @type_sort
+      @products = sort_style @category_id, @type_sort
     end
 
     render "products/index"
   end
 
-  def edit; end
-  
   def show
+    @detail_order = current_order.detail_orders.build
     @product_ratings = Rating.product_rating(@product.id)
     @product_on = star_on @product_ratings
 
@@ -44,19 +43,8 @@ class ProductsController < ApplicationController
     show
   end
 
-  def update
-    if @product.update_attributes product_params
-      flash[:success] = t ".success"
-      redirect_to @product
-    else
-      render :edit
-    end
-  end
-
-  def destroy; end
-
   def load_product
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
     return if @product.present?
     flash[:info] = t ".info"
     redirect_to root_path

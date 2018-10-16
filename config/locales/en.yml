@@ -29,6 +29,7 @@ en:
       mana_prod: Product Manager
       mana_cate: Category Manager
       mana_suggest: Suggetion Manager
+      mana_orders: Order Manager
   sessions:
     warning: "You are currently logged in"
     back: "Welcome back %{user_name}"
@@ -71,6 +72,8 @@ en:
     info: "Product is not found"
     danger: "Product can not save"
     link: "%{u}"
+    product_row:
+      add: ADD TO CART
     index:
       title: All Products
       title_sort: PRODUCTS

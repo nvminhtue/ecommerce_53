@@ -20,17 +20,12 @@ module ProductLib
   end
 
   def categories_option
-    categories = Category.sort_alphabet_az
-    option = []
-    categories.each do |cate|
-      option << cate.name
-    end
-    return option
+    return Category.sort_alphabet_az
   end
 
-  def children_id category_name
+  def children_id category_id
     array_id = []
-    @parent = Category.find_by(name: category_name)
+    @parent = Category.find_by(id: category_id)
     array_id << @parent.id
 
     i = 0
@@ -49,10 +44,10 @@ module ProductLib
     return array_id
   end
 
-  def sort_style category_sort, type_sort
+  def sort_style category_id, type_sort
     page_row = Settings.paginate_for.sort_page
     
-    if category_sort == "-- Categories --"
+    if category_id == "-- Categories --"
       case type_sort
       when "A-Z"
         products = Product.sort_alphabet_az
@@ -71,46 +66,24 @@ module ProductLib
           .paginate(:page => params[:page], :per_page => page_row)
       end
     else
-      category = Category.find_by(name: category_sort)
+      list_id = children_id category_id
 
-      if category.blank?
-        case type_sort
-        when "A-Z"
-          products = Product.sort_category(category_sort).sort_alphabet_az
-            .paginate(:page => params[:page], :per_page => page_row)
-        when "Z-A"
-          products = Product.sort_category(category_sort).sort_alphabet_za
-            .paginate(:page => params[:page], :per_page => page_row)
-        when "Price"
-          products = Product.sort_category(category_sort).sort_price
-            .paginate(:page => params[:page], :per_page => page_row)
-        when "Rating"
-          products = Product.sort_category(category_sort).sort_rating
-            .paginate(:page => params[:page], :per_page => page_row)
-        else
-          products = Product.sort_category(category_sort).sort_alphabet_az
-            .paginate(:page => params[:page], :per_page => page_row)
-        end
+      case type_sort
+      when "A-Z"
+        products = Product.sort_category_children(list_id).sort_alphabet_az
+          .paginate(:page => params[:page], :per_page => page_row)
+      when "Z-A"
+        products = Product.sort_category_children(list_id).sort_alphabet_za
+          .paginate(:page => params[:page], :per_page => page_row)
+      when "Price"
+        products = Product.sort_category_children(list_id).sort_price
+          .paginate(:page => params[:page], :per_page => page_row)
+      when "Rating"
+        products = Product.sort_category_children(list_id).sort_rating
+          .paginate(:page => params[:page], :per_page => page_row)
       else
-        list_id = children_id category_sort
-
-        case type_sort
-        when "A-Z"
-          products = Product.sort_category_children(list_id).sort_alphabet_az
-            .paginate(:page => params[:page], :per_page => page_row)
-        when "Z-A"
-          products = Product.sort_category_children(list_id).sort_alphabet_za
-            .paginate(:page => params[:page], :per_page => page_row)
-        when "Price"
-          products = Product.sort_category_children(list_id).sort_price
-            .paginate(:page => params[:page], :per_page => page_row)
-        when "Rating"
-          products = Product.sort_category_children(list_id).sort_rating
-            .paginate(:page => params[:page], :per_page => page_row)
-        else
-          products = Product.sort_category_children(list_id).sort_alphabet_az
-            .paginate(:page => params[:page], :per_page => page_row)
-        end
+        products = Product.sort_category_children(list_id).sort_alphabet_az
+          .paginate(:page => params[:page], :per_page => page_row)
       end
     end
 

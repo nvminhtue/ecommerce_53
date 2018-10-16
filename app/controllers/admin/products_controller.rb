@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
   layout "admin_layout"
   before_action :load_product, only: %i(edit update destroy)
-  before_action :load_categories_select, only: %i(edit new)
+  before_action :load_categories_select, only: %i(edit new create)
 
   def index
     @products = Product.paginate(page: params[:page], per_page: 10)
@@ -38,7 +38,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new product_params
     if @product.save
       flash[:success] = t ".created"
-      redirect_to @product
+      redirect_to admin_products_path
     else
       render :new
     end
@@ -47,9 +47,6 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params[:product][:category_id] = 
-      Category.find_by(name: params[:product][:category]).id
-
     params.require(:product)
       .permit :name, :description, :category_id, :price, :picture
   end
@@ -61,7 +58,7 @@ class Admin::ProductsController < ApplicationController
     redirect_to root_path
   end
 
-  # def load_categories_select
-  #   @categories = categories_option
-  # end
+  def load_categories_select
+    @categories = categories_option
+  end
 end

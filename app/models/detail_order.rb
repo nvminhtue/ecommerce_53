@@ -4,6 +4,11 @@ class DetailOrder < ApplicationRecord
   validates :quantity, presence: true,
     numericality: {only_integer: true, greater_than: 0}
   validate :product_present
+  scope :of_order, -> order_id do
+    joins(:product).includes(:product).
+    joins(:order).includes(:order).
+    where(order_id: order_id)
+  end
 
   private
 

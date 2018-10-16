@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'suggestions/index'
+    get 'detail_orders/show'
   end
   root "static_pages#home"
   get "sessions/new"
@@ -15,10 +15,15 @@ Rails.application.routes.draw do
   get "/suggestions", to: "suggestions#new"
   post "/suggestions", to: "suggestions#create"
   get "/recently", to: "recent_views#recently"
+  get "/cart", to: "carts#show"
+  get "/checkout", to: "carts#destroy"
+  get "/history", to: "orders#index"
 
   resources :users
   resources :products
   resources :categories
+  resources :orders
+  resources :detail_orders, only: [:create, :update, :destroy]
 
   namespace :admin do
     root "static_pages#home"
@@ -26,5 +31,7 @@ Rails.application.routes.draw do
     resources :products
     resources :categories
     resources :suggestions
+    resources :orders, only: %i(index update)
+    resources :detail_orders, only: :show
   end
 end

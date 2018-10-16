@@ -15,12 +15,12 @@
 
       <%= f.label :parent_category %>
       <!-- categories select -->
-      <% products_option = "<option>nil</option>" %>
+      <% products_option = "<option value='nil'>nil</option>" %>
       <% @categories.each do |cate| %>
-        <% if @parent.present? && @parent.name == cate %>
-          <% products_option += "<option selected>"+cate+"</option>" %>
+        <% if @category.present? && @category.name == cate %>
+          <% products_option += "<option value='"+cate.id.to_s+"' selected>"+cate.name+"</option>" %>
         <% else %>
-          <% products_option += "<option>"+cate+"</option>" %>
+          <% products_option += "<option value='"+cate.id.to_s+"'>"+cate.name+"</option>" %>
         <% end %>
       <% end %>
       <%= f.select :parent_id, products_option.html_safe, {},

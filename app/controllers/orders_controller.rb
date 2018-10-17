@@ -1,10 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    if current_user.customer?
-      @history_orders = Order._order(current_user.id).includes(:detail_orders)
-    else
-      @history_orders = Order.includes(:detail_orders)
-    end
+    @history_orders = Order._order(current_user.id).includes(:detail_orders)
   end
 
   def show

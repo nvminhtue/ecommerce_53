@@ -3,8 +3,13 @@ class Admin::SuggestionsController < ApplicationController
   before_action :load_suggestion, only: :update
 
   def index
-    @suggestion =  Suggestion.paginate(page: params[:page],
-     per_page: Settings.paginate_for.admin_page)
+    if params[:status] == "Pending"
+      @suggestion = Suggestion.new_suggestion.paginate(page: params[:page],
+        per_page: Settings.paginate_for.admin_page)
+    else
+      @suggestion =  Suggestion.of_manager.paginate(page: params[:page],
+        per_page: Settings.paginate_for.admin_page)
+    end
   end
 
   def new

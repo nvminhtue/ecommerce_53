@@ -8,7 +8,7 @@
 <div class="row fix height-default-js">
   <div class="col-sm-4"></div>
   <div class="col-sm-4 login-view">
-    <%= form_for [:admin, @category] do |f| %>
+    <%= form_for @category, url: admin_categories_path do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>

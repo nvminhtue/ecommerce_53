@@ -1,18 +1,16 @@
-<% categories.each do |cate| %>
-  <% child_category = children_categories(cate.id) %>
-  <% if child_category.count > 0 %>
-  <li class="dropdown-submenu mydrop">
-    <%= link_to cate.name, products_path(category: cate.id), class: "dropdown-toggle" %>
-    <% if child_category.any? %>
-      <% child_category.each do |child| %>
-        <% categories.delete(child) %>
-      <% end %>
-    <ul class="dropdown-menu">
+<ul class="dropdown-menu">
+<% categories.each do |category| %>
+  <% child_category = children_categories(category.id) %>
+  <% if child_category.any? %>
+    <!-- co children -->
+    <li class="dropdown-submenu">
+      <%= link_to category.name, products_path(category: category.id),class: "dropdown-toggle" %>
+      
       <%= render partial: "layouts/subcategory", locals: {categories: child_category.to_a} %>
-    </ul>
-    <% end %>   
-  </li>
+    </li>
+    <!-- /co children -->
   <% else %>
-  <li><%= link_to cate.name, products_path(category: cate.id) %></li>
+    <li><%= link_to category.name, products_path(category: category.id) %></li>
   <% end %>
 <% end %>
+</ul>

@@ -17,32 +17,35 @@
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover center-vetical">
     <tr>
-      <% columns = load_suggest_columns %>
-      <% columns.each do |col| %>
-        <th><%= col.capitalize %></th>
-      <% end %>
+      <th>Id</th>
+      <th>UserName</th>
+      <th width="20px">Picture</th>
+      <th>ProductName</th>
+      <th>CategoryName</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th>Status</th>
     </tr>
     <tr>
     <!-- table -->
     <% @suggestion.each do |s| %>
     <tr>
-      <% for i in 0...columns.count do %>
-        <% if columns[i] == "status" %>
-          <!-- if true -->
-          <td class="table-status">
-            <%= render partial: "status", locals: {suggest: s} %>
-          </td>
-          <!-- /if true -->
-        <% else %>
-          <td><%= s[columns[i]] %></td>
-        <% end %>
-      <% end %>
+        <td><%= s.id %></td>
+        <td><%= s.user.name %></td>
+        <td><%= image_tag s.picture.url, class: "img-responsive" %></td>
+        <td><%= s.name %></td>
+        <td><%= s.category.name %></td>
+        <td><%= s.price %></td>
+        <td><%= s.created_at.strftime("%m-%d-%Y") %></td>
+        <td class="table-status">
+          <%= render partial: "status", locals: {suggest: s} %>
+        </td>
     </tr>
     <% end %>
     <!-- /table -->
   </table>
 </div>
-  <%= will_paginate @suggestion %>
+  <%#= will_paginate @suggestion %>
 </div>
 </div>
 </div>

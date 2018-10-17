@@ -24,16 +24,20 @@
             Product <span class="caret"></span>
           </a>
           <ul class="dropdown-menu multi-level">
-          <% @array_categories.each do |category| %>
-            <li><%= link_to category.name, products_path(category: category.id) %></li>
-            <% child_category = children_categories(category.id) %>
-            <% if child_category.any? %>
-              <% child_category.each do |child| %>
-                <% @array_categories.delete(child) %>
+            <% @array_categories.each do |category| %>
+              <% child_category = children_categories(category.id) %>
+              <% if child_category.any? %>
+                <!-- co children -->
+                <li class="dropdown-submenu  mydrop">
+                  <%= link_to category.name, products_path(category: category.id),class: "dropdown-toggle" %>
+                  
+                  <%= render partial: "layouts/subcategory", locals: {categories: child_category} %>
+                </li>
+                <!-- /co children -->
+              <% else %>
+                <li><%= link_to category.name, products_path(category: category.id) %></li>
               <% end %>
-              <%= render partial: "layouts/subcategory", locals: {categories: child_category.to_a} %>
             <% end %>
-          <% end %>
           </ul>
         </li>
         <!-- /Multi dropdown menu -->
@@ -51,9 +55,11 @@
             <%= link_to cart_path do %>
               <span class="glyphicon glyphicon-shopping-cart"></span> 
               <%= t(".cart") %>
-              <span class="cart-count">
-                <%= current_order.detail_orders.size %>
-              </span>
+              <% if current_order.detail_orders.size > 0 %>
+                <span class="cart-count">
+                  <%= current_order.detail_orders.size %>
+                </span>
+              <% end %>
             <% end %>
           </li>
           <li>

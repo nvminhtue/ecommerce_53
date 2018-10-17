@@ -4,7 +4,7 @@
     <h1>
       <%= t(".new_title") %>
     </h1>
-    <%= form_for @user do |f| %>
+    <%= form_for @user, url: admin_users_path do |f| %>
       <%= render "shared/error_messages" %>
 
       <%= f.label :name %>

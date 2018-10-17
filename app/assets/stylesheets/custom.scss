@@ -124,3 +124,66 @@
 .detail-total{
   text-align: center;
 }
+
+// left admin 
+.admin-menu-left{
+  border-bottom: 1px solid #3299cc !important;
+}
+
+.admin-menu-click,
+.admin-hs .go{
+  background-color: #3299cc;
+  color: white;
+  display: block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.admin-menu-click{
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.admin-hs{
+  background-color: #3299cc;
+}
+
+.admin-menu-click .btright{
+  float: right;
+  transform: rotate(0);
+  transition: 0.5s;
+}
+
+.admin-hs .go{
+  padding: 10px 15px 10px 30px;
+}
+
+.admin-hs .go:last-child{
+   border-bottom: 1px solid #e7e7e7 !important;
+}
+
+.admin-menu-click:hover,
+.admin-hs .go:hover{
+  background-color: #2979a0 !important;
+  text-decoration: none;
+}
+
+.hide{
+  display: none;
+}
+
+.admin-select{
+  background-color: #2979a0 !important;
+}
+
+.img{
+  object-fit: cover;
+  object-position: 50% -80%;
+}
+
+.none-border{
+  border-radius: 0px !important;
+}
+
+.product .pi h4{
+  color: #123d50;
+}

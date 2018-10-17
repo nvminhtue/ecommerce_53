@@ -6,6 +6,6 @@ module Admin::SuggestionsHelper
   end
 
   def status_suggestion
-    status = ["Pending", "Under Consideration", "Implemented", "Deleted"]
+    status = ["Pending", "UnderConsideration", "Implemented", "Deleted"]
   end
 end

@@ -3,8 +3,15 @@ class Admin::OrdersController < ApplicationController
   before_action :load_order, only: :update
 
   def index
-    @orders = Order.all.paginate(page: params[:page],
-     per_page: Settings.paginate_foradmin_page)
+    if params[:status] == "Pending"
+      @title_head = "NEW ORDERS"
+      @orders = Order.new_order.paginate(page: params[:page],
+        per_page: Settings.paginate_foradmin_page)
+    else
+      @title_head = "MANAGER ORDERS"
+      @orders = Order.all.paginate(page: params[:page],
+        per_page: Settings.paginate_foradmin_page)
+    end
   end
 
   def update

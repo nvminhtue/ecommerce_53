@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   has_many :products
+  belongs_to :suggestion, optional: true
   validates :name, uniqueness: true
   scope :parent_category, -> {where parent_id: nil}
   scope :children_category, -> id {where parent_id: id}

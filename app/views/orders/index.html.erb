@@ -28,12 +28,6 @@
         <th>Status</th>
         <th>Total Bill</th>
         <th width="80px">Details</th>
-
-        <% if current_user.admin? %>
-
-        <th width="220px">Status</th>
-
-        <% end %>
       </tr>
       <!-- row order -->
       <% @history_orders.each do |history| %>
@@ -48,19 +42,6 @@
               <i class="fa fa-info-circle"></i> Details
             <% end %>
           </td>
-          
-
-          <% if current_user.admin? %>
-          <%= form_for history do |f| %>
-        
-          <td class="order-confirm">
-            <%= f.select :status, Order.statuses.keys.to_a, {}, {class: "form-control"} %>
-
-            <%= f.submit "Confirm", class: "btn btn-primary" %>
-          </td>
-
-          <% end %>
-          <% end %>
         </tr>
         <% end %>
       <% end %>

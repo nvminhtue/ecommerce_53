@@ -1,7 +1,7 @@
 <!-- title -->
 <div class="row">
   <div class="col-lg-12">
-      <h1 class="page-header">MANAGER ORDER</h1>
+      <h1 class="page-header"><%= @title_head %></h1>
   </div>
 </div>
 <!-- /title -->
@@ -30,7 +30,7 @@
       <% for i in 0...columns.count do %>
 
         <% if columns[i] == "status" %>
-          <%= render "order_status", order: order %>
+          <%= render "admin/orders/order_status", order: order %>
         <% else %>
           <td><%= order[columns[i]] %></td>
         <% end %>
@@ -47,7 +47,7 @@
     <!-- /table user -->
   </table>
 </div>
-  <%= will_paginate @orders %>
+  <%#= will_paginate orders %>
 </div>
 </div>
 </div>

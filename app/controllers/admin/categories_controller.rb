@@ -13,7 +13,7 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if @category.id.to_s == params[:category][:parent_id]
-      flash[:warning] = t ".cannott"
+      flash[:warning] = t ".cannot"
       render :edit
     else
       if @category.update_attributes category_params
@@ -56,14 +56,15 @@ class Admin::CategoriesController < ApplicationController
     if params[:category][:parent_id] == "nil"
       params[:category][:parent_id] = nil
     else
-      parent = Category.find_by(name: params[:category][:parent_id])
+      parent = Category.find_by(id: params[:category][:parent_id])
       
       if parent.present?
         params[:category][:parent_id] = parent.id
       else
-        params[:category][:parent_id]
+        params[:category][:parent_id] = nil
       end
     end
+
 
     params.require(:category)
       .permit :name, :parent_id

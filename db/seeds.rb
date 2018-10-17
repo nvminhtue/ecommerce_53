@@ -16,32 +16,32 @@ User.create!(name: "Ha Van Dong",
   role: 1
 )
 
-# 10.times do |n|
-#   name  = Faker::Name.name
-#   email = "example-#{n+1}@railstutorial.org"
-#   password = "password"
-#   address = "16 Ly Thuong Kiet"
-#   phone = "0905507959"
+10.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  address = "16 Ly Thuong Kiet"
+  phone = "0905507959"
 
-#   User.create!(name: name,
-#     email: email,
-#     password: password,
-#     password_confirmation: password,
-#     address: address,
-#     phone: phone)
-# end
+  User.create!(name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    address: address,
+    phone: phone)
+end
 # /test login
 
 # test category
-# Category.create!(name: "Ghe")
-# Category.create!(name: "Ghe van phong",parent_id: 1)
-# Category.create!(name: "Ghe game",parent_id: 1)
-# Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
-# Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
-# Category.create!(name: "Ghe giam doc",parent_id: 5)
-# Category.create!(name: "Ghe game 123",parent_id: 3)
-# Category.create!(name: "Ghe game 456",parent_id: 3)
-# Category.create!(name: "Ban")
+Category.create!(name: "Ghe")
+Category.create!(name: "Ghe van phong",parent_id: 1)
+Category.create!(name: "Ghe game",parent_id: 1)
+Category.create!(name: "Ghe van phong 1 sao",parent_id: 2)
+Category.create!(name: "Ghe van phong 5 sao",parent_id: 2)
+Category.create!(name: "Ghe giam doc",parent_id: 5)
+Category.create!(name: "Ghe game 123",parent_id: 3)
+Category.create!(name: "Ghe game 456",parent_id: 3)
+Category.create!(name: "Ban")
 # /test category
 
 # test hot trend
@@ -185,43 +185,57 @@ User.create!(name: "Ha Van Dong",
 # /test suggestion
 
 # test manager order
-Category.create!(name: "Quan ao")
-Product.create!(name: "Quan 2018",
-  description: "none",
-  category_id: 1,
-  quantity: 1,
-  price: 1
-)
-Product.create!(name: "Ao 2010",
-  description: "none",
-  category_id: 1,
-  quantity: 1,
-  price: 1
-)
+# Category.create!(name: "Quan ao")
+# Product.create!(name: "Quan 2018",
+#   description: "none",
+#   category_id: 1,
+#   quantity: 1,
+#   price: 1
+# )
+# Product.create!(name: "Ao 2010",
+#   description: "none",
+#   category_id: 1,
+#   quantity: 1,
+#   price: 1
+# )
 
-Order.create!(user_id: 1,
-  status: "Pending",
-  total: 100
-)
-Order.create!(user_id: 2,
-  status: "Paid",
-  total: 100
-)
+# Order.create!(user_id: 1,
+#   status: "Pending",
+#   total: 100
+# )
+# Order.create!(user_id: 2,
+#   status: "Paid",
+#   total: 100
+# )
 
-DetailOrder.create(order_id: 1,
-  product_id: 1,
-  quantity: 1,
-  price: 1
-)
-DetailOrder.create(order_id: 1,
-  product_id: 2,
-  quantity: 1,
-  price: 1
-)
-DetailOrder.create(order_id: 2,
-  product_id: 1,
-  quantity: 1,
-  price: 1
-)
-
+# DetailOrder.create(order_id: 1,
+#   product_id: 1,
+#   quantity: 1,
+#   price: 1
+# )
+# DetailOrder.create(order_id: 1,
+#   product_id: 2,
+#   quantity: 1,
+#   price: 1
+# )
+# DetailOrder.create(order_id: 2,
+#   product_id: 1,
+#   quantity: 1,
+#   price: 1
+# )
 # /test manager order
+
+# test picture carrierwave
+10.times do
+  rand = 1+Random.rand(11);
+
+  Product.create!(name: Faker::Name.unique.name,
+    description: "A",
+    category_id: 1,
+    quantity: 1,
+    price: 100,
+    picture: Rails.root.join("public/images/product/#{rand}.jpg").open
+  )
+end
+
+# /test picture carrierwave

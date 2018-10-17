@@ -26,6 +26,9 @@
    { class: "form-control sort-cate"  }
   %>
   <!-- /categories select -->
+
+  <%= f.label :price %>
+  <%= f.text_field :price, class: "form-control" %>
   
   <div class="form-group">
     <%= f.label :picture %>
@@ -33,7 +36,7 @@
   </div>
   
   <br>
-  <%= f.submit "Send suggestion", class: "btn btn-primary btsuggest" %>
+  <%= f.submit "Send suggestion", class: "btn btn-primary  btn-block bt-edit" %>
   <% end %>
 <div class="col-sm-4"></div>
 </div>

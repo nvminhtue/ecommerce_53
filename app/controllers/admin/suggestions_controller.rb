@@ -3,7 +3,7 @@ class Admin::SuggestionsController < ApplicationController
   before_action :load_suggestion, only: :update
 
   def index
-    @suggestion =  Suggestion.paginate(page: params[:page],
+    @suggestion =  Suggestion.of_manager.paginate(page: params[:page],
      per_page: Settings.paginate_for.admin_page)
   end
 

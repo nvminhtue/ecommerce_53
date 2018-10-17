@@ -15,7 +15,8 @@ class SuggestionsController < ApplicationController
   private
   def suggest_param
     params.require(:suggestion)
-      .permit :name, :user_id, :description, :category_id, :picture, :status
+      .permit :name, :user_id, :description,
+       :category_id, :picture, :status, :price
   end
 
   def load_categories_select

@@ -51,9 +51,11 @@
             <%= link_to cart_path do %>
               <span class="glyphicon glyphicon-shopping-cart"></span> 
               <%= t(".cart") %>
-              <span class="cart-count">
-                <%= current_order.detail_orders.size %>
-              </span>
+              <% if current_order.detail_orders.size > 0 %>
+                <span class="cart-count">
+                  <%= current_order.detail_orders.size %>
+                </span>
+              <% end %>
             <% end %>
           </li>
           <li>

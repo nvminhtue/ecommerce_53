@@ -1,6 +1,7 @@
 class Admin::OrdersController < ApplicationController
+  # include OrdersHelper
   layout "admin_layout"
-  before_action :load_order, only: :update
+  before_action :load_order, only: [:update, :destroy]
 
   def index
     if params[:status] == "Pending"
@@ -21,6 +22,11 @@ class Admin::OrdersController < ApplicationController
       flash[:success] = t ".update-fail"
     end
 
+    redirect_to admin_orders_path
+  end
+
+  def destroy
+    @order.delete
     redirect_to admin_orders_path
   end
 

@@ -19,20 +19,25 @@
     <tr>
       <% columns = load_order_columns %>
       <% columns.each do |col| %>
-        <th><%= col.capitalize %></th>
+        <th ><%= col.capitalize %></th>
       <% end %>
         <th width="80px">Details</th>
     </tr>
     <tr>
     <!-- table user -->
     <% @orders.each do |order| %>
+    <% if (order.Pending? || order.Delivering?) %>
     <tr>
       <% for i in 0...columns.count do %>
 
         <% if columns[i] == "status" %>
           <%= render "admin/orders/order_status", order: order %>
         <% else %>
-          <td><%= order[columns[i]] %></td>
+          <% if columns[i] == "created_at" %>
+          <td style= "text-align: center"><%= order[columns[i]].strftime("%m-%d-%Y") %></td>
+          <% else %>
+          <td style= "text-align: center"><%= order[columns[i]] %></td>
+          <% end %>
         <% end %>
 
       <% end %>
@@ -43,6 +48,7 @@
         <% end %>
       </td>
     </tr>
+    <% end %>
     <% end %>
     <!-- /table user -->
   </table>

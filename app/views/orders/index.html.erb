@@ -22,24 +22,31 @@
   <div class="panel-body">
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover center-vetical">
-      <tr>
-        <th>Order Number</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th>Total Bill</th>
-        <th width="80px">Details</th>
+      <tr >
+        <th style="width:8%">Order Number</th>
+        <th style="width:10%">Date</th>
+        <th style="width:20%">Status</th>
+        <th style="width:20%">Total Bill</th>
+        <th style="width:10%">Details</th>
+        <th style="width:10%">Cancle</th>
       </tr>
       <!-- row order -->
       <% @history_orders.each do |history| %>
-        <% if history.detail_orders.present? && history.status != "Idle"%>
+        <% if history.detail_orders.present? && history.user_id == current_user.id%>
         <tr>
-          <td><%= history.id %></td>
-          <td><%= history.created_at.to_date.strftime("%d/%m/%Y") %></td>
-          <td><%= history.status%></td>
-          <td><%= number_to_currency(history.total, unit: "VND", format: "%n %u", precision: 0) %></td>
-          <td>
+          <td style= "text-align: center"><%= history.id %></td>
+          <td style= "text-align: center"><%= history.created_at.to_date.strftime("%d/%m/%Y") %></td>
+          <td style= "text-align: center"><%= history.status%></td>
+          <td style= "text-align: center"><%= number_to_currency(history.total) %></td>
+          <td style= "text-align: center">
             <%=link_to order_path(history.id) do %>
               <i class="fa fa-info-circle"></i> Details
+            <% end %>
+          <td style= "text-align: center">
+            <% unless history.Paid? %>
+              <%= link_to order_path(history.id), method: :delete, data:{confirm: "Are you sure ?"} do %>
+                <i class="fa fa-ban"></i> Cancle
+              <% end %>
             <% end %>
           </td>
         </tr>

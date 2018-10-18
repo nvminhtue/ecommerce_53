@@ -26,22 +26,22 @@
     <tr>
 
     <% total = 0 %>
-    
+
     <% @details_order.each do |detail| %>
     <% subtotal = detail.quantity*detail.price %>
     <% total += subtotal %>
     <tr>
       <td><%= image_tag detail.product.picture.url, class: "img-responsive" %></td>
-      <td><%= detail.product.name %></td>
+      <td><%= link_to detail.product.name, detail.product %></td>
       <td><%= detail.quantity %></td>
-      <td><%= detail.price %> VND </td>
-      <td><%= subtotal %> VND </td>
+      <td><%= number_to_currency detail.price %></td>
+      <td><%= number_to_currency subtotal %></td>
     </tr>
     <% end %>
-    
+
     <tr>
       <td colspan="4"></td>
-      <td>Total :<%= total %> VND </td>
+      <td><b>Total :<%= number_to_currency total %></b></td>
     </tr>
 
   </table>

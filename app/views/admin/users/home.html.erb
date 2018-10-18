@@ -104,5 +104,11 @@
     </div>
   </div>
 </div>
+    <%= content_tag :div, "", height: 50, id: "orders_chart",
+      data: {orders: Order.total_grouped_by_month} %>
+    <%= content_tag :h3,
+      t(".graph",u: Date.today.strftime("%Y").to_i), align: "center" %>
 </div>
 <%= render partial: "admin/block_bot" %>
+<script type="text/javascript" src = "/assets/admin/chart.js"></script>
+

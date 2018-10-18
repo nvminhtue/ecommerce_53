@@ -1,0 +1,46 @@
+<%= flash[:notice]%>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+ td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+ tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table>
+  <thead>
+  <tr>
+    <th>Index</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @products.each_with_index do |product| %>
+    <tr>
+      <td><%= product.id %></td>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= product.category.name %></td>
+      <td><%= product.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div>
+  <h4>Import data</h4>
+  <%= form_tag import_admin_products_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import", class: "btn btn-primary" %>
+  <% end %>
+</div>

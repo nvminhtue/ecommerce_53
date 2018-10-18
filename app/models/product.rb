@@ -36,4 +36,16 @@ class Product < ApplicationRecord
   scope :sort_product_updated, ->{order("created_at desc").limit(12)}
   scope :recently_products, -> list {where "id in (?)", list}
   scope :select_col, ->{attribute_names}
+
+  def self.import_file file
+    spreadsheet = Roo::Spreadsheet.open file
+    header = spreadsheet.row 1
+    orders = []
+    (2..spreadsheet.last_row).each do |i|
+      row = [header, spreadsheet.row(i)].transpose.to_h
+      order = new row
+      orders << order
+    end
+    import! orders
+  end
 end

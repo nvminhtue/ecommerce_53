@@ -5,6 +5,6 @@ module Admin::OrdersHelper
   end
 
   def status_order
-    status = ["Idle", "Pending", "Delivering", "Paid"]
+    Order.statuses
   end
 end

@@ -12,6 +12,10 @@ en:
       info: "Product is not found"
     detail_orders_controller:
       info: "Could not load detail order"
+  admin:
+    users:
+      home:
+        graph: Overall Shopping Chart in %{u}
   carts:
     success: "Successful order "
     info: Order infomation has been sent to your email
@@ -47,6 +51,7 @@ en:
       mana_user: User Manager
       mana_prod: Product Manager
       mana_cate: Category Manager
+      mana_import: Import CSV
       mana_suggest: Suggetion Manager
       mana_orders: Order Manager
   orders:
@@ -203,6 +208,9 @@ en:
       destroy:
         destroy-success: Deleted category.
         destroy-fail: Can't delete category.
+    static_pages:
+      home:
+        graph: Sales revenue in %{u}
     suggestions:
       index:
         title_head: SUGGETION MANAGER
@@ -217,7 +225,7 @@ en:
   number:
     currency:
       format:
-        delimiter: "."
+        delimiter: ","
         format: "%n %u"
         precision: 0
         separator: ","

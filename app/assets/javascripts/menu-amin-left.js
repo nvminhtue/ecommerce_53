@@ -46,12 +46,6 @@ function nice_admin(){
   }
 
   // products
-  if(window.location.href.indexOf("/admin/products") != -1){
-    hs("admin-menu-2");
-    admin_menu_select(document.getElementById("products_list"));
-    return;
-  }
-
   if(window.location.href.indexOf("/admin/categories") != -1){
     hs("admin-menu-2");
     admin_menu_select(document.getElementById("products_cate"));
@@ -61,6 +55,18 @@ function nice_admin(){
   if(window.location.href.indexOf("/admin/orders") != -1){
     hs("admin-menu-2");
     admin_menu_select(document.getElementById("products_order"));
+    return;
+  }
+
+  if(window.location.href.indexOf("/admin/products/import") != -1){
+    hs("admin-menu-2");
+    admin_menu_select(document.getElementById("products_import"));
+    return;
+  }
+
+  if(window.location.href.indexOf("/admin/products") != -1){
+    hs("admin-menu-2");
+    admin_menu_select(document.getElementById("products_list"));
     return;
   }
 

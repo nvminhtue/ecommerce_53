@@ -1,16 +1,11 @@
-<!--
-
-
-
-
-  Gửi anh chị trainer: file này em chưa sử dụng i18n file này mới chỉ là demo giao diện
-
-
-
-
-
--->
-
+<link rel="stylesheet"
+href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script
+  src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js">
+</script>
+<script
+  src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js">
+</script>
 <div class="row">
   <div class="col-lg-12">
       <h1 class="page-header">DASHBOARD</h1>
@@ -68,3 +63,8 @@
   </div>
   <div class="col-sm-3"></div>
 </div>
+<%= content_tag :div, "", height: 50, id: "orders_chart",
+  data: {orders: Order.total_grouped_by_month} %>
+<%= content_tag :h3,
+  t(".graph",u: Date.today.strftime("%Y").to_i), align: "center" %>
+<script type="text/javascript" src = "/assets/admin/chart.js"></script>

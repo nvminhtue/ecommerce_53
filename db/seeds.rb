@@ -94,10 +94,13 @@ Product.create!(name: "A",
   )
 end
 
-10.times do
+30.times do
   user_id = 1+Random.rand(4)
   o = Order.create!(user_id: user_id,
-    status: 1
+    status: 1,
+    total: rand(100..900),
+    created_at: rand(1.year).seconds.ago
+
   )
 
   4.times do
@@ -258,16 +261,16 @@ end
 # /test manager order
 
 # test picture carrierwave
-10.times do
-  rand = 1+Random.rand(11);
+# 10.times do
+#   rand = 1+Random.rand(11);
 
-  Product.create!(name: Faker::Name.unique.name,
-    description: "A",
-    category_id: 1,
-    quantity: 1,
-    price: 100,
-    picture: Rails.root.join("public/images/product/#{rand}.jpg").open
-  )
-end
+#   Product.create!(name: Faker::Name.unique.name,
+#     description: "A",
+#     category_id: 1,
+#     quantity: 1,
+#     price: 100,
+#     picture: Rails.root.join("public/images/product/#{rand}.jpg").open
+#   )
+# end
 
 # /test picture carrierwave

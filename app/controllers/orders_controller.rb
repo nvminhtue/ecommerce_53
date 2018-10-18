@@ -24,9 +24,14 @@ class OrdersController < ApplicationController
     redirect_to history_path
   end
 
+  def destroy
+    @history = Order.find(params[:id])
+    @history.delete
+    redirect_to history_path
+  end
+
   private
   def order_params
     params.require(:order).permit(:status)
   end
-
 end

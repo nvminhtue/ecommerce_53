@@ -54,6 +54,9 @@
           <%= link_to admin_products_path, class: "go", id: "products_list" do %>
             <i class="fa fa-list" aria-hidden="true"></i> List Product
           <% end %>
+          <%= link_to import_admin_products_path, class: "go", id: "products_import" do %>
+            <i class="fa fa-cloud" aria-hidden="true"></i> <%= t ".mana_import" %>
+          <% end %>
           <%= link_to admin_categories_path, class: "go", id: "products_cate" do %>
               <i class="fa fa-industry" aria-hidden="true"></i> <%= t ".mana_cate" %>
           <% end %>

@@ -36,4 +36,25 @@ class Product < ApplicationRecord
   scope :sort_product_updated, ->{order("created_at desc").limit(12)}
   scope :recently_products, -> list {where "id in (?)", list}
   scope :select_col, ->{attribute_names}
+
+  def self.import_file file
+    # file có thể ở dạng file hoặc là path của file đều được xử lý chính xác bởi method open
+    spreadsheet = Roo::Spreadsheet.open file
+    # lấy cột header (column name)
+    header = spreadsheet.row 1
+    orders = []
+    (2..spreadsheet.last_row).each do |i|
+      # lấy ra bản ghi và biến đổi thành hash để có thể tạo record tương ứng
+      row = [header, spreadsheet.row(i)].transpose.to_h
+      order = new row
+      orders << order
+    end
+    import! orders
+  end
+
+  # def self.import_file file
+  #   CSV.foreach(file.path, headers: true) do |row|
+  #     Product.create! row.to_hash
+  #   end
+  # end
 end

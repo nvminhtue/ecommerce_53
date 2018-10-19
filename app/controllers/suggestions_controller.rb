@@ -7,9 +7,13 @@ class SuggestionsController < ApplicationController
 
   def create
     @suggest = Suggestion.new suggest_param
-    return unless @suggest.save
-    flash[:success] = t "controllers.suggestion_controller.thank"
-    redirect_to root_path
+    if @suggest.save
+      flash[:success] = t "controllers.suggestion_controller.thank"
+      redirect_to root_path
+    else
+      flash[:warning] = t "controllers.suggestion_controller.ops"
+      redirect_to suggestions_path
+    end
   end
 
   private

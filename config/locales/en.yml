@@ -6,6 +6,7 @@ en:
       rating_star:  You rated it {%point}.
     suggestion_controller:
       thank: Thank you :) your feedback will be reviewed.
+      ops: Ops! Something's gone wrong, please try again
   carts:
     info: Order infomation has been sent to your email
     show:

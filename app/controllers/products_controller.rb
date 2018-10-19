@@ -29,6 +29,10 @@ class ProductsController < ApplicationController
     add_resently @product.id
   end
 
+  def new
+    binding.pry
+  end
+
   def rating
     load_product
     update = @product.ratings.find_by(user_id: current_user.id)

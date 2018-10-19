@@ -44,6 +44,15 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def show
+    @products = Product.all
+  end
+
+  def import
+    Product.import_file params[:file]
+    redirect_to import_admin_products_path, notice: "Data imported"
+  end
+
   private
 
   def product_params

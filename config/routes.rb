@@ -27,8 +27,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "static_pages#home"
+    get "/import", to: "products#show"
     resources :users
-    resources :products
+    resources :products do
+      collection {post :import}
+    end
     resources :categories
     resources :suggestions
     resources :orders, only: %i(index update)

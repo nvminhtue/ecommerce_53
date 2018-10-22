@@ -16,20 +16,20 @@ User.create!(name: "Ha Van Dong",
   role: 1
 )
 
-# 10.times do |n|
-#   name  = Faker::Name.name
-#   email = "example-#{n+1}@railstutorial.org"
-#   password = "password"
-#   address = "16 Ly Thuong Kiet"
-#   phone = "0905507959"
+10.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  address = "16 Ly Thuong Kiet"
+  phone = "0905507959"
 
-#   User.create!(name: name,
-#     email: email,
-#     password: password,
-#     password_confirmation: password,
-#     address: address,
-#     phone: phone)
-# end
+  User.create!(name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    address: address,
+    phone: phone)
+end
 # /test login
 
 # test category

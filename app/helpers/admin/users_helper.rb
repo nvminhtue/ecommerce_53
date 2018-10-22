@@ -4,4 +4,7 @@ module Admin::UsersHelper
     columns = User.select_col - exclude_columns
     columns
   end
+  def load_role
+    User.roles
+  end
 end

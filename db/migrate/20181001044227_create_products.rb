@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :category_id
       t.integer :price
       t.float :rate, default: 0
-      t.decimal :price
+      t.integer :price
 
       t.timestamps
     end

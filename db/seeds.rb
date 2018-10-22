@@ -138,7 +138,6 @@ Category.create!(name: "Ban")
 #   quantity: 1,
 #   price: 1
 # )
-
 # 10.times do |i|
 #   rand = 2+Random.rand(7)
 #   Product.create!(name: Faker::Pokemon.name+"_"+i.to_s,
@@ -223,5 +222,19 @@ Category.create!(name: "Ban")
 #   quantity: 1,
 #   price: 1
 # )
-
 # /test manager order
+
+# test picture carrierwave
+10.times do
+  rand = 1+Random.rand(11);
+
+  Product.create!(name: Faker::Name.unique.name,
+    description: "A",
+    category_id: 1,
+    quantity: 1,
+    price: 100,
+    picture: Rails.root.join("public/images/product/#{rand}.jpg").open
+  )
+end
+
+# /test picture carrierwave

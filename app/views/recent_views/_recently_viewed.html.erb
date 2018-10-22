@@ -4,7 +4,7 @@
   <div class="col-sm-10 fix">
     <div class="prod-title">
       <%= link_to url do %>
-        <i class="<%= icon %>" aria-hidden="true"></i> 
+        <i class="<%= icon %>" aria-hidden="true"></i>
         <%= title %>
       <% end %>
     </div>
@@ -16,7 +16,7 @@
             <%= image_tag(product.picture.url, class: "img") %>
             <div class="content">
               <div class="line"></div>
-              <p class="citem">$ <%= product.price %></p>
+              <p class="citem"><%= product.price %> VNĐ</p>
               <h4 class="citem"><%= product.name %></h4>
             </div>
             <div class="topbg">&nbsp;</div>

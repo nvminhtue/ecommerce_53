@@ -32,14 +32,22 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    render html: user_params
+    @user = User.new user_params
+    if @user.save
+      flash[:success] = t ".created"
+      redirect_to admin_users_path
+    else
+      flash[:danger] = t ".danger"
+      render :new
+    end
   end
 
   private
 
   def user_params
     params.require(:user)
-      .permit :name, :email, :phone, :address, :password, :password_confirmation
+      .permit :name, :email, :phone, :address, :role,
+       :password, :password_confirmation
   end
 
   def load_user

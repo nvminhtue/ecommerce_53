@@ -1,6 +1,6 @@
 <div class="row fix suggest height-default-js">
 <div class="col-sm-4"></div>
-<div class="col-sm-4 fix">
+<div class="col-sm-4 fix login-view">
   <h2><%= t ".h2" %></h2>
   <%= form_for @suggest do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id.to_s %>
@@ -8,7 +8,7 @@
 
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
-  
+
   <%= f.label :description %>
   <%= f.text_field :description, class: "form-control" %>
 
@@ -29,13 +29,12 @@
 
   <%= f.label :price %>
   <%= f.text_field :price, class: "form-control" %>
-  
+
   <div class="form-group">
     <%= f.label :picture %>
     <%= f.file_field :picture %>
   </div>
-  
-  <br>
+
   <%= f.submit "Send suggestion", class: "btn btn-primary  btn-block bt-edit" %>
   <% end %>
 <div class="col-sm-4"></div>

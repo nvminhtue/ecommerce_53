@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @category_id = params[:category]
     @type_sort = params[:type_sort]
 
-    if @category_sort.blank? && @type_sort.blank?
+    if @category_id.blank? && @type_sort.blank?
       @products = Product.sort_product_updated.paginate(page: params[:page],
        per_page: Settings.paginate_for.sort_page)
     else
